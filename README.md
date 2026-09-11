@@ -22,6 +22,7 @@ palestra-landing/
 ├── foto.html             Galleria fotografica
 ├── macchinari.html       Elenco macchinari filtrabile per gruppo muscolare
 ├── recensioni.html       Carosello recensioni Google
+├── profilo.html          Area profilo: SOLO anteprima grafica, login/registrazione non funzionanti
 ├── css/style.css         Stile condiviso da tutte le pagine
 ├── js/main.js            Nav mobile, stato orari, filtro macchinari, carosello recensioni
 ├── img/                  Logo, foto, video ed eventuali icone
@@ -36,6 +37,7 @@ palestra-landing/
 - **Abbonati**: servizi inclusi, 4 piani (giornaliero, mensile, 6 mesi, 12 mesi), contatti (chiamaci/scrivici/paga online).
 - **Macchinari**: filtro per Braccia, Gambe, Petto, Schiena, Cardio, Corpo libero.
 - **Recensioni**: carosello con frecce e indicatori, ordinate per valutazione più alta.
+- **Profilo**: icona nella navbar (accanto a "Iscriviti ora") che apre un'anteprima di come sarà l'area personale (login/registrazione, stato abbonamento, pagamento, privacy). È solo dimostrativa: nessun dato viene salvato, serve un backend reale prima di attivarla (dettagli in `NOTE-PLACEHOLDER.md`).
 
 ## Prima di pubblicare
 

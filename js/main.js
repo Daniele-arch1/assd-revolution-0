@@ -21,6 +21,18 @@
         navToggle.setAttribute("aria-expanded", "false");
       });
     });
+    document.addEventListener("click", function (e) {
+      if (!mainNav.classList.contains("is-open")) return;
+      if (mainNav.contains(e.target) || navToggle.contains(e.target)) return;
+      mainNav.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && mainNav.classList.contains("is-open")) {
+        mainNav.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+      }
+    });
   }
 
   /* ---------- Orari palestra ----------
@@ -180,5 +192,33 @@
     });
 
     render();
+  }
+
+  /* ---------- Area profilo (demo, non funzionante) ----------
+     Anteprima UI: nessun dato viene salvato o inviato da nessuna parte. */
+  var authTabs = document.querySelectorAll(".auth-tab");
+  if (authTabs.length) {
+    var loginForm = document.getElementById("loginForm");
+    var registerForm = document.getElementById("registerForm");
+    var authNote = document.getElementById("authFormNote");
+
+    authTabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        authTabs.forEach(function (t) { t.classList.remove("is-active"); });
+        tab.classList.add("is-active");
+        var isLogin = tab.dataset.tab === "login";
+        if (loginForm) loginForm.classList.toggle("is-hidden", !isLogin);
+        if (registerForm) registerForm.classList.toggle("is-hidden", isLogin);
+        if (authNote) authNote.textContent = "";
+      });
+    });
+
+    [loginForm, registerForm].forEach(function (form) {
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (authNote) authNote.textContent = "Anteprima dimostrativa: nessun dato è stato salvato.";
+      });
+    });
   }
 })();

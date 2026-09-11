@@ -271,7 +271,7 @@ p {
   gap: 28px;
 }
 
-.main-nav a:not(.btn) {
+.main-nav a:not(.btn):not(.profile-icon-btn) {
   font-size: 14.5px;
   font-weight: 600;
   color: #fff;
@@ -279,7 +279,7 @@ p {
   padding: 6px 0;
 }
 
-.main-nav a:not(.btn)::after {
+.main-nav a:not(.btn):not(.profile-icon-btn)::after {
   content: "";
   position: absolute;
   left: 0;
@@ -290,8 +290,36 @@ p {
   transition: right .2s ease;
 }
 
-.main-nav a:not(.btn):hover::after {
+.main-nav a:not(.btn):not(.profile-icon-btn):hover::after {
   right: 0;
+}
+
+.profile-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .3);
+  color: #fff;
+  flex-shrink: 0;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+.profile-icon-btn:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.profile-icon-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.profile-icon-label {
+  display: none;
 }
 
 .nav-toggle {
@@ -1356,6 +1384,116 @@ p {
   margin: 0 0 28px;
 }
 
+.dev-note.center {
+  max-width: 520px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+/* ---------- Area profilo (demo, non funzionante) ---------- */
+.auth-section {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.auth-tab.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.auth-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  box-shadow: var(--shadow);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-form.is-hidden {
+  display: none;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.form-field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.form-field input {
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  font-family: inherit;
+  color: var(--color-text);
+}
+
+.form-field input:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12.8px;
+  color: var(--color-text-muted);
+  text-align: left;
+}
+
+.form-check input {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.form-note {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: 14px;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 24px;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .location-grid,
@@ -1365,7 +1503,8 @@ p {
 
   .events-grid,
   .machine-grid,
-  .photo-grid {
+  .photo-grid,
+  .preview-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1407,10 +1546,31 @@ p {
     pointer-events: auto;
   }
 
-  .main-nav a:not(.btn) {
+  .main-nav a:not(.btn):not(.profile-icon-btn) {
     color: #fff !important;
     padding: 12px 4px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .main-nav .profile-icon-btn {
+    width: auto;
+    height: auto;
+    justify-content: flex-start;
+    gap: 10px;
+    border: none;
+    border-radius: 0;
+    padding: 12px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .main-nav .profile-icon-btn:hover {
+    background: transparent;
+  }
+
+  .profile-icon-label {
+    display: inline;
+    font-size: 14.5px;
+    font-weight: 600;
   }
 
   .main-nav .btn {
@@ -1425,7 +1585,8 @@ p {
   .machine-grid,
   .photo-grid,
   .services-grid,
-  .pricing-grid {
+  .pricing-grid,
+  .preview-grid {
     grid-template-columns: 1fr;
   }
 
