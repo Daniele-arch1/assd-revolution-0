@@ -164,12 +164,12 @@
   var WEEK_LABELS = ["Domenica", "Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi", "Sabato"];
   var HOURS = [
     null,                    // Domenica: chiuso
-    ["09:00", "20:30"],      // Lunedi
-    ["09:00", "20:30"],      // Martedi
-    ["09:00", "20:30"],      // Mercoledi
-    ["09:00", "20:30"],      // Giovedi
-    ["09:00", "20:30"],      // Venerdi
-    ["09:00", "14:00"]       // Sabato
+    ["09:00", "21:00"],      // Lunedi
+    ["09:00", "21:00"],      // Martedi
+    ["09:00", "21:00"],      // Mercoledi
+    ["09:00", "21:00"],      // Giovedi
+    ["09:00", "21:00"],      // Venerdi
+    ["09:00", "13:00"]       // Sabato
   ];
 
   function toMinutes(hhmm) {
@@ -291,6 +291,18 @@
 
     var reviewCards = reviewTrack.querySelectorAll(".review-card");
 
+    /* Lo scroll interno si attiva solo sulle card che ne hanno davvero bisogno (testo più
+       lungo dello spazio fisso): altrimenti su mobile un dito che parte sopra una card "vuota"
+       ma comunque scrollabile rischia di restare intrappolato lì invece di continuare a scorrere
+       la pagina fino al footer. */
+    var updateReviewScrollability = function () {
+      reviewCards.forEach(function (card) {
+        card.style.overflowY = card.scrollHeight > card.clientHeight ? "auto" : "hidden";
+      });
+    };
+    updateReviewScrollability();
+    window.addEventListener("resize", updateReviewScrollability);
+
     /* Transizione con scorrimento direzionale (avanti/indietro), stessa tecnica del carosello hero
        ma con offset laterale così le card sembrano scorrere invece di apparire di scatto. */
     var goToReview = function (index) {
@@ -401,9 +413,16 @@
       });
     });
 
+    document.querySelectorAll(".event-thumb img").forEach(function (img) {
+      img.addEventListener("click", function () {
+        openLightbox(img.src, img.alt);
+      });
+    });
+
     lightbox.addEventListener("click", function (e) {
       if (e.target === lightbox) closeLightbox();
     });
+    if (lightboxImg) lightboxImg.addEventListener("click", closeLightbox);
     if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
