@@ -190,15 +190,14 @@
   }
 
   /* ---------- Carosello recensioni ----------
-     Dati segnaposto: sostituisci con le recensioni reali
-     (es. tramite Google Places API o un widget di terze parti),
-     ordinate per valutazione piu alta. */
+     Recensioni reali fornite dal titolare. Per aggiungerne altre,
+     aggiungi un nuovo oggetto {name, rating, date, text} alla lista. */
   var REVIEWS = [
-    { name: "Marco B.", rating: 5, date: "2 settimane fa", text: "Palestra pulitissima e staff sempre disponibile. Gli attrezzi sono nuovi e ben tenuti." },
-    { name: "Sara K.", rating: 5, date: "1 mese fa", text: "Ambiente accogliente sia per chi parla italiano che sloveno. Il personal trainer mi ha seguita passo passo." },
-    { name: "Luka N.", rating: 5, date: "1 mese fa", text: "Ottimo rapporto qualita prezzo, sala pesi completa e mai troppo affollata." },
-    { name: "Elena T.", rating: 4, date: "2 mesi fa", text: "Corsi molto validi, spogliatoi puliti. Consigliata a chi cerca serieta." },
-    { name: "Davide P.", rating: 4, date: "3 mesi fa", text: "Struttura curata nei minimi dettagli, parcheggio comodo vicino all'ingresso." }
+    { name: "Fabio", rating: 5, date: "Recensione Google", text: "La migliore palestra di Gorizia. Divisa su tre livelli: appena entri trovi la prima sala pesi, al piano inferiore un'altra sala pesi e al piano superiore la sala cardio. Locale climatizzato, personale simpatico e disponibile. Spogliatoi con armadietti muniti di lucchetto per chi ne avesse bisogno." },
+    { name: "Pierpaolo", rating: 5, date: "Recensione Google", text: "Fantastica palestra in via Brigata Casale a Gorizia. Sviluppata su tre piani, offre ogni tipo di attività: dai programmi cardio fitness, alla ginnastica, al bodybuilding e molto altro. Vivace e dinamica anche grazie ai molti iscritti, offre un clima giovane ed empatico. I titolari sono gentili, preparati e molto legati alla propria clientela. La palestra offre molte convenzioni. Consigliatissima." },
+    { name: "Mauro", rating: 5, date: "Recensione Google", text: "Peccato aver avuto qualche difficoltà quando ho scoperto questa palestra a Gorizia, ma spero di poterci tornare un giorno. Le persone che ci lavorano sono cordiali, buone panche per allenarsi. Sulle attrezzature farei forse scelte diverse, ma niente che renda impossibile l'allenamento: anzi, è un'ottima palestra in generale, con gli spazi divisi in stanze diverse, per me un punto molto positivo. Preferibile rispetto ad allenarsi in una grande catena: anche se i prezzi sono più bassi, preferisco comunque pagare qualcosa in più per un'ASD." },
+    { name: "Giulio", rating: 5, date: "Recensione Google", text: "Ottimo ambiente, palestra con tutto quello che serve. Staff simpatico." },
+    { name: "Giuseppe", rating: 5, date: "Recensione Google", text: "Ottima palestra, consiglio a tutti." }
   ].sort(function (a, b) { return b.rating - a.rating; });
 
   var reviewTrack = document.getElementById("reviewTrack");
