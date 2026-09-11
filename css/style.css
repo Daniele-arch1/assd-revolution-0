@@ -271,7 +271,7 @@ p {
   gap: 28px;
 }
 
-.main-nav a:not(.btn):not(.profile-icon-btn) {
+.main-nav a:not(.btn) {
   font-size: 14.5px;
   font-weight: 600;
   color: #fff;
@@ -279,7 +279,7 @@ p {
   padding: 6px 0;
 }
 
-.main-nav a:not(.btn):not(.profile-icon-btn)::after {
+.main-nav a:not(.btn)::after {
   content: "";
   position: absolute;
   left: 0;
@@ -290,36 +290,8 @@ p {
   transition: right .2s ease;
 }
 
-.main-nav a:not(.btn):not(.profile-icon-btn):hover::after {
+.main-nav a:not(.btn):hover::after {
   right: 0;
-}
-
-.profile-icon-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, .3);
-  color: #fff;
-  flex-shrink: 0;
-  transition: background .15s ease, border-color .15s ease;
-}
-
-.profile-icon-btn:hover {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-.profile-icon-btn svg {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-.profile-icon-label {
-  display: none;
 }
 
 .nav-toggle {
@@ -1546,31 +1518,10 @@ p {
     pointer-events: auto;
   }
 
-  .main-nav a:not(.btn):not(.profile-icon-btn) {
+  .main-nav a:not(.btn) {
     color: #fff !important;
     padding: 12px 4px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  }
-
-  .main-nav .profile-icon-btn {
-    width: auto;
-    height: auto;
-    justify-content: flex-start;
-    gap: 10px;
-    border: none;
-    border-radius: 0;
-    padding: 12px 4px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  }
-
-  .main-nav .profile-icon-btn:hover {
-    background: transparent;
-  }
-
-  .profile-icon-label {
-    display: inline;
-    font-size: 14.5px;
-    font-weight: 600;
   }
 
   .main-nav .btn {
