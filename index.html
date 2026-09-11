@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A.S.D. Revolution Sport — Più di una palestra</title>
+<meta name="description" content="A.S.D. Revolution Sport: sala pesi, macchinari, sala cardio e corsi. Scopri gli orari, dove si trova la palestra e abbonati ora.">
+<link rel="icon" type="image/webp" href="img/logo.webp">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="img/logo.webp" alt="Logo A.S.D. Revolution Sport" class="brand-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-logo',textContent:'RS'}))">
+      <span class="brand-text">
+        <strong>Revolution Sport</strong>
+        <small>Più di una palestra</small>
+      </span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="abbonati.html#servizi">Servizi</a>
+      <a href="macchinari.html">Macchinari</a>
+      <a href="index.html#orari">Orari</a>
+      <a href="index.html#eventi">Aggiornamenti</a>
+      <a href="abbonati.html" class="btn btn-primary btn-small">Iscriviti ora</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-media">
+    <!-- Inserire qui il video reale della palestra:
+         <video autoplay muted loop playsinline poster="img/hero-poster.jpg">
+           <source src="img/hero-video.mp4" type="video/mp4">
+         </video> -->
+    <div class="hero-poster" aria-hidden="true"></div>
+  </div>
+
+  <div class="hero-content">
+    <span class="eyebrow">A.S.D. Revolution Sport</span>
+    <h1>Più di una <span>palestra</span></h1>
+    <p class="lead">Sala pesi, macchinari di ultima generazione, sala cardio e professionisti qualificati. In un unico ambiente, tra Italia e Slovenia.</p>
+    <div class="hero-actions">
+      <a href="abbonati.html" class="btn btn-primary">Abbonati ora</a>
+      <a href="#dove-siamo" class="btn btn-outline" style="color:#fff;">Dove si trova</a>
+    </div>
+    <div class="hero-meta">
+      <span class="hero-status" id="gymStatus"><span class="dot"></span><span class="label">Verifica orari…</span></span>
+      <span class="hero-address">📍 Via Brigata Casale, 32 — 34170 Gorizia (GO)</span>
+    </div>
+  </div>
+
+  <a href="#dove-siamo" class="scroll-hint">Scopri di più</a>
+</section>
+
+<!-- ============ DOVE SI TROVA ============ -->
+<section class="section" id="dove-siamo">
+  <div class="container">
+    <div class="location-grid">
+      <div class="location-info">
+        <span class="eyebrow">Dove si trova</span>
+        <h2>Vieni ad allenarti da noi</h2>
+        <p>Siamo facilmente raggiungibili da entrambi i lati del confine, con parcheggio nelle vicinanze.</p>
+
+        <div class="info-row">
+          <span class="info-icon">📍</span>
+          <div>
+            <h4>Indirizzo</h4>
+            <p>Via Brigata Casale, 32 — 34170 Gorizia (GO) — a pochi minuti dal confine con la Slovenia</p>
+          </div>
+        </div>
+        <div class="info-row" style="border-bottom:none;">
+          <span class="info-icon">📞</span>
+          <div>
+            <h4>Contatti</h4>
+            <p>+39 000 000 0000 · info@revolutionsport.it</p>
+          </div>
+        </div>
+
+        <div id="orari" style="margin-top:20px;">
+          <details class="hours-accordion">
+            <summary class="hours-summary">
+              <span class="info-icon">🕒</span>
+              <span class="hours-today-text"><strong>Oggi</strong><span id="hoursToday">Caricamento…</span></span>
+              <span class="hours-chevron">▾</span>
+            </summary>
+            <div class="hours-panel">
+              <table class="hours-table">
+                <tbody id="hoursTableBody"></tbody>
+              </table>
+              <div class="closure-note">
+                <strong>Chiusure straordinarie:</strong> nessuna comunicazione al momento. Eventuali chiusure per festività verranno pubblicate in questa sezione.
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=Via+Brigata+Casale,+32,+34170+Gorizia+GO&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mappa A.S.D. Revolution Sport"
+          aria-label="Mappa della posizione della palestra in Via Brigata Casale 32, Gorizia"></iframe>
+        <div class="map-cta">
+          <span>Ottieni indicazioni stradali</span>
+          <a class="btn btn-primary btn-small" href="https://www.google.com/maps/dir/?api=1&destination=Via+Brigata+Casale%2C+32%2C+34170+Gorizia+GO" target="_blank" rel="noopener">Apri Maps ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESPLORA LA PALESTRA ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Esplora la palestra</span>
+      <h2>Dai un'occhiata dentro Revolution Sport</h2>
+    </div>
+    <div class="explore-grid">
+      <a class="explore-card" href="foto.html">
+        <div class="card-bg bg-photos" aria-hidden="true"></div>
+        <div class="card-body">
+          <span class="tag">Galleria</span>
+          <h3>Foto della palestra</h3>
+          <p>Uno sguardo agli ambienti: sala pesi, sala cardio, spogliatoi e area corsi.</p>
+          <span class="btn btn-light">Guarda le foto</span>
+        </div>
+      </a>
+      <a class="explore-card" href="macchinari.html">
+        <div class="card-bg bg-machines" aria-hidden="true"></div>
+        <div class="card-body">
+          <span class="tag">Attrezzatura</span>
+          <h3>I nostri macchinari</h3>
+          <p>L'elenco completo degli attrezzi, filtrabile per gruppo muscolare.</p>
+          <span class="btn btn-light">Vedi i macchinari</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CORSI ED EVENTI ============ -->
+<section class="section" id="eventi">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Aggiornamenti</span>
+      <h2>Corsi ed eventi</h2>
+      <p>Uno spazio dedicato alle attività organizzate da associazioni e professionisti che utilizzano la nostra sala fitness. Nuove date in arrivo.</p>
+    </div>
+    <div class="events-grid">
+      <article class="event-card">
+        <div class="event-thumb">Immagine corso in arrivo</div>
+        <div class="event-body">
+          <span class="event-date">Prossimamente</span>
+          <h3>Corso di functional training</h3>
+          <p>Contenuto segnaposto: dettagli del corso e organizzatore verranno pubblicati a breve.</p>
+        </div>
+      </article>
+      <article class="event-card">
+        <div class="event-thumb">Immagine evento in arrivo</div>
+        <div class="event-body">
+          <span class="event-date">Prossimamente</span>
+          <h3>Open day associazione sportiva</h3>
+          <p>Contenuto segnaposto: data, orario e modalità di partecipazione in arrivo.</p>
+        </div>
+      </article>
+      <article class="event-card">
+        <div class="event-thumb">Immagine evento in arrivo</div>
+        <div class="event-body">
+          <span class="event-date">Prossimamente</span>
+          <h3>Workshop con personal trainer</h3>
+          <p>Contenuto segnaposto: descrizione dell'attività e come iscriversi.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOCIAL ============ -->
+<section class="section section-alt social-section">
+  <div class="container">
+    <span class="eyebrow">Seguici</span>
+    <h2>Resta aggiornato sui social</h2>
+    <p style="max-width:480px;margin:0 auto 28px;">Foto, novità e aggiornamenti su corsi ed eventi: seguici su Facebook e Instagram.</p>
+    <div class="social-links">
+      <a class="social-btn facebook" href="https://facebook.com/" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.2c0-.87.24-1.46 1.5-1.46H16.5V4.1C16.2 4.06 15.2 4 14 4c-2.4 0-4 1.46-4 4.15V10.5H7.5v3H10V21h3.5z"/></svg>
+        Facebook
+      </a>
+      <a class="social-btn instagram" href="https://instagram.com/" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.78.22 2.41.46.65.25 1.2.6 1.75 1.15.55.55.9 1.1 1.15 1.75.24.63.41 1.35.46 2.41.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.78-.46 2.41-.25.65-.6 1.2-1.15 1.75-.55.55-1.1.9-1.75 1.15-.63.24-1.35.41-2.41.46-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.78-.22-2.41-.46a4.95 4.95 0 0 1-1.75-1.15 4.95 4.95 0 0 1-1.15-1.75c-.24-.63-.41-1.35-.46-2.41C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.78.46-2.41.25-.65.6-1.2 1.15-1.75A4.95 4.95 0 0 1 5.42 2.57c.63-.24 1.35-.41 2.41-.46C8.89 2.01 9.25 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25A3.25 3.25 0 1 1 12 8.75a3.25 3.25 0 0 1 0 6.5zm5.4-8.7a1.17 1.17 0 1 1-2.34 0 1.17 1.17 0 0 1 2.34 0z"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="brand-text"><strong>Revolution Sport</strong></span>
+      <p>Sala pesi, macchinari, sala cardio e corsi. Tra Italia e Slovenia, più di una palestra.</p>
+      <div class="footer-social">
+        <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Palestra</h3>
+      <ul>
+        <li><a href="abbonati.html">Servizi</a></li>
+        <li><a href="macchinari.html">Macchinari</a></li>
+        <li><a href="foto.html">Foto</a></li>
+        <li><a href="index.html#eventi">Corsi ed eventi</a></li>
+        <li><a href="recensioni.html">Recensioni</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Contatti</h3>
+      <ul>
+        <li>Via Brigata Casale, 32 — 34170 Gorizia (GO)</li>
+        <li>+39 000 000 0000</li>
+        <li>info@revolutionsport.it</li>
+        <li>Sito realizzato da <a href="https://daniele-arch1.github.io/Kodermaz.portfolio/#hero" target="_blank" rel="noopener">Daniele Kodermaz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Orari</h3>
+      <ul>
+        <li>Lun–Ven: 09:00–20:30</li>
+        <li>Sabato: 09:00–14:00</li>
+        <li>Domenica: chiuso</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 A.S.D. Revolution Sport · Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

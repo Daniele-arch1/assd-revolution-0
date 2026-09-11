@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Macchinari — Revolution Sport</title>
+<meta name="description" content="L'elenco completo dei macchinari di A.S.D. Revolution Sport, filtrabile per gruppo muscolare: braccia, gambe, petto, schiena.">
+<link rel="icon" type="image/webp" href="img/logo.webp">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="img/logo.webp" alt="Logo A.S.D. Revolution Sport" class="brand-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-logo',textContent:'RS'}))">
+      <span class="brand-text">
+        <strong>Revolution Sport</strong>
+        <small>Più di una palestra</small>
+      </span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="abbonati.html#servizi">Servizi</a>
+      <a href="macchinari.html">Macchinari</a>
+      <a href="index.html#orari">Orari</a>
+      <a href="index.html#eventi">Aggiornamenti</a>
+      <a href="abbonati.html" class="btn btn-primary btn-small">Iscriviti ora</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="page-banner">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Macchinari</div>
+    <h1>I nostri macchinari</h1>
+    <p>Filtra per gruppo muscolare per trovare subito l'attrezzo che cerchi.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="machine-banner">
+      <img src="img/zona corpo libero e macchinari.webp" alt="Zona corpo libero e macchinari della palestra">
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn is-active" data-filter="tutti">Tutti</button>
+      <button class="filter-btn" data-filter="braccia">Braccia</button>
+      <button class="filter-btn" data-filter="gambe">Gambe</button>
+      <button class="filter-btn" data-filter="petto">Petto</button>
+      <button class="filter-btn" data-filter="schiena">Schiena</button>
+      <button class="filter-btn" data-filter="cardio">Cardio</button>
+      <button class="filter-btn" data-filter="corpo-libero">Corpo libero</button>
+    </div>
+
+    <div class="machine-grid">
+      <!-- Braccia -->
+      <div class="machine-card" data-category="braccia">
+        <div class="machine-thumb">💪</div>
+        <div class="machine-info">
+          <span class="cat-tag">Braccia</span>
+          <h3>Macchina bicipiti</h3>
+          <p>Isola e allena i bicipiti con un movimento guidato e controllato.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="braccia">
+        <div class="machine-thumb">💪</div>
+        <div class="machine-info">
+          <span class="cat-tag">Braccia</span>
+          <h3>Cavo tricipiti</h3>
+          <p>Estensioni ai cavi per rinforzare i tricipiti in sicurezza.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="braccia">
+        <div class="machine-thumb">💪</div>
+        <div class="machine-info">
+          <span class="cat-tag">Braccia</span>
+          <h3>Panca Scott</h3>
+          <p>Curl guidato per isolare il bicipite riducendo lo sforzo sulla schiena.</p>
+        </div>
+      </div>
+
+      <!-- Gambe -->
+      <div class="machine-card" data-category="gambe">
+        <div class="machine-thumb">🦵</div>
+        <div class="machine-info">
+          <span class="cat-tag">Gambe</span>
+          <h3>Leg press</h3>
+          <p>Allenamento completo di quadricipiti e glutei in totale sicurezza.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="gambe">
+        <div class="machine-thumb">🦵</div>
+        <div class="machine-info">
+          <span class="cat-tag">Gambe</span>
+          <h3>Leg extension</h3>
+          <p>Estensione della gamba per isolare i quadricipiti.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="gambe">
+        <div class="machine-thumb">🦵</div>
+        <div class="machine-info">
+          <span class="cat-tag">Gambe</span>
+          <h3>Leg curl</h3>
+          <p>Flessione della gamba per rinforzare i femorali.</p>
+        </div>
+      </div>
+
+      <!-- Petto -->
+      <div class="machine-card" data-category="petto">
+        <div class="machine-thumb">🏋️</div>
+        <div class="machine-info">
+          <span class="cat-tag">Petto</span>
+          <h3>Panca piana</h3>
+          <p>Il classico esercizio per lo sviluppo del pettorale.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="petto">
+        <div class="machine-thumb">🏋️</div>
+        <div class="machine-info">
+          <span class="cat-tag">Petto</span>
+          <h3>Chest press</h3>
+          <p>Spinta guidata per allenare il petto senza sollecitare le spalle.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="petto">
+        <div class="machine-thumb">🏋️</div>
+        <div class="machine-info">
+          <span class="cat-tag">Petto</span>
+          <h3>Croci ai cavi</h3>
+          <p>Movimento di apertura per rifinire e definire il pettorale.</p>
+        </div>
+      </div>
+
+      <!-- Schiena -->
+      <div class="machine-card" data-category="schiena">
+        <div class="machine-thumb">🧗</div>
+        <div class="machine-info">
+          <span class="cat-tag">Schiena</span>
+          <h3>Lat machine</h3>
+          <p>Trazioni al petto per allenare il gran dorsale.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="schiena">
+        <div class="machine-thumb">🧗</div>
+        <div class="machine-info">
+          <span class="cat-tag">Schiena</span>
+          <h3>Rematore</h3>
+          <p>Tirata orizzontale per rinforzare la schiena e migliorare la postura.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="schiena">
+        <div class="machine-thumb">🧗</div>
+        <div class="machine-info">
+          <span class="cat-tag">Schiena</span>
+          <h3>Pulley basso</h3>
+          <p>Tirata al cavo basso per lavorare su dorsali e trapezio.</p>
+        </div>
+      </div>
+
+      <!-- Cardio -->
+      <div class="machine-card" data-category="cardio">
+        <div class="machine-thumb">🏃</div>
+        <div class="machine-info">
+          <span class="cat-tag">Cardio</span>
+          <h3>Tapis roulant</h3>
+          <p>Corsa e camminata con inclinazione regolabile per il lavoro aerobico.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="cardio">
+        <div class="machine-thumb">🚴</div>
+        <div class="machine-info">
+          <span class="cat-tag">Cardio</span>
+          <h3>Cyclette</h3>
+          <p>Allenamento cardiovascolare a basso impatto sulle articolazioni.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="cardio">
+        <div class="machine-thumb">🚣</div>
+        <div class="machine-info">
+          <span class="cat-tag">Cardio</span>
+          <h3>Vogatore</h3>
+          <p>Esercizio completo che unisce lavoro cardio e forza su schiena e gambe.</p>
+        </div>
+      </div>
+
+      <!-- Corpo libero -->
+      <div class="machine-card" data-category="corpo-libero">
+        <div class="machine-thumb">🤸</div>
+        <div class="machine-info">
+          <span class="cat-tag">Corpo libero</span>
+          <h3>Sbarra per trazioni</h3>
+          <p>Trazioni a corpo libero per dorsali, bicipiti e presa.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="corpo-libero">
+        <div class="machine-thumb">🤸</div>
+        <div class="machine-info">
+          <span class="cat-tag">Corpo libero</span>
+          <h3>Parallele</h3>
+          <p>Dip a corpo libero per petto, tricipiti e spalle.</p>
+        </div>
+      </div>
+      <div class="machine-card" data-category="corpo-libero">
+        <div class="machine-thumb">🤸</div>
+        <div class="machine-info">
+          <span class="cat-tag">Corpo libero</span>
+          <h3>Area functional</h3>
+          <p>Spazio libero con tappetini per esercizi a corpo libero e mobilità.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="brand-text"><strong>Revolution Sport</strong></span>
+      <p>Sala pesi, macchinari, sala cardio e corsi. Tra Italia e Slovenia, più di una palestra.</p>
+      <div class="footer-social">
+        <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Palestra</h3>
+      <ul>
+        <li><a href="abbonati.html">Servizi</a></li>
+        <li><a href="macchinari.html">Macchinari</a></li>
+        <li><a href="foto.html">Foto</a></li>
+        <li><a href="index.html#eventi">Corsi ed eventi</a></li>
+        <li><a href="recensioni.html">Recensioni</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Contatti</h3>
+      <ul>
+        <li>Via Brigata Casale, 32 — 34170 Gorizia (GO)</li>
+        <li>+39 000 000 0000</li>
+        <li>info@revolutionsport.it</li>
+        <li>Sito realizzato da <a href="https://daniele-arch1.github.io/Kodermaz.portfolio/#hero" target="_blank" rel="noopener">Daniele Kodermaz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Orari</h3>
+      <ul>
+        <li>Lun–Ven: 09:00–20:30</li>
+        <li>Sabato: 09:00–14:00</li>
+        <li>Domenica: chiuso</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 A.S.D. Revolution Sport · Tutti i diritti riservati</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
