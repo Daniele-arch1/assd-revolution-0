@@ -4,6 +4,7 @@
    ========================================================= */
 
 :root {
+  color-scheme: light;
   --color-bg: #ffffff;
   --color-bg-alt: #f6f5f3;
   --color-bg-dark: #121212;
@@ -482,9 +483,15 @@ p {
 }
 
 .hero-address {
+  position: absolute;
+  left: 24px;
+  bottom: 28px;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, .85);
 }
 
 .scroll-hint {
@@ -1142,6 +1149,34 @@ p {
   width: 100%;
 }
 
+/* ---------- Accordion "vedi tutti" per servizi/abbonamenti (attivo solo su mobile, vedi media query 760px) ---------- */
+.mobile-accordion {
+  border: none;
+}
+
+.mobile-accordion-summary {
+  display: none;
+  list-style: none;
+  margin-bottom: 22px;
+}
+
+.mobile-accordion-summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-accordion-chevron {
+  flex-shrink: 0;
+  transition: transform .2s ease;
+}
+
+.mobile-accordion[open] .mobile-accordion-chevron {
+  transform: rotate(180deg);
+}
+
+.mobile-featured-card {
+  display: none;
+}
+
 /* ---------- Photo gallery (foto.html) ---------- */
 .photo-grid {
   display: grid;
@@ -1300,18 +1335,6 @@ p {
 
 .machine-card.is-hidden {
   display: none;
-}
-
-.machine-thumb {
-  width: 84px;
-  height: 84px;
-  border-radius: var(--radius-sm);
-  background: var(--color-bg-alt);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
 }
 
 .machine-info .cat-tag {
@@ -1735,6 +1758,51 @@ p {
   }
 
   .section {
-    padding: 64px 0;
+    padding: 76px 0;
+  }
+
+  .section-head {
+    margin-bottom: 36px;
+  }
+
+  .hero-content {
+    padding: 130px 24px 90px;
+  }
+
+  .hero-content h1 {
+    margin-bottom: 22px;
+  }
+
+  .hero-actions {
+    margin-bottom: 32px;
+  }
+
+  .hero-address {
+    display: none;
+  }
+
+  .hero-arrow,
+  .review-arrow {
+    display: none;
+  }
+
+  .events-grid,
+  .machine-grid,
+  .photo-grid,
+  .services-grid,
+  .pricing-grid,
+  .preview-grid {
+    gap: 26px;
+  }
+
+  /* Servizi e abbonamenti: su mobile mostrano solo il primo punto, il resto si apre con l'icona freccia */
+  .mobile-accordion-summary {
+    display: flex;
+    width: 100%;
+  }
+
+  .mobile-featured-card {
+    display: block;
+    margin-bottom: 22px;
   }
 }

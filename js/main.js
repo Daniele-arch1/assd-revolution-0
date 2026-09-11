@@ -6,6 +6,63 @@
 (function () {
   "use strict";
 
+  /* ---------- Swipe touch (usato da carosello hero e recensioni) ---------- */
+  var addSwipeSupport = function (el, onSwipeLeft, onSwipeRight) {
+    if (!el) return;
+    var startX = 0;
+    var startY = 0;
+    var tracking = false;
+
+    el.addEventListener("touchstart", function (e) {
+      if (e.touches.length !== 1) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      tracking = true;
+    }, { passive: true });
+
+    el.addEventListener("touchend", function (e) {
+      if (!tracking) return;
+      tracking = false;
+      var deltaX = e.changedTouches[0].clientX - startX;
+      var deltaY = e.changedTouches[0].clientY - startY;
+      if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+      if (deltaX < 0) onSwipeLeft(); else onSwipeRight();
+    }, { passive: true });
+  };
+
+  /* ---------- Accordion "vedi tutti" (servizi/abbonamenti, solo mobile) ---------- */
+  var mobileAccordions = document.querySelectorAll(".mobile-accordion");
+  if (mobileAccordions.length) {
+    var updateAccordionLabel = function (el) {
+      var summary = el.querySelector(".mobile-accordion-summary");
+      var label = summary ? summary.querySelector(".mobile-accordion-label") : null;
+      if (!summary || !label) return;
+      label.textContent = el.open ? summary.dataset.labelOpen : summary.dataset.labelClosed;
+    };
+
+    mobileAccordions.forEach(function (el) {
+      el.addEventListener("toggle", function () {
+        el.dataset.userToggled = "1";
+        updateAccordionLabel(el);
+      });
+    });
+
+    var applyAccordionState = function () {
+      var isMobile = window.innerWidth <= 760;
+      mobileAccordions.forEach(function (el) {
+        if (isMobile) {
+          if (!el.dataset.userToggled) el.open = false;
+        } else {
+          el.open = true;
+        }
+        updateAccordionLabel(el);
+      });
+    };
+
+    applyAccordionState();
+    window.addEventListener("resize", applyAccordionState);
+  }
+
   /* ---------- Hero slider (scorrimento immagini) ---------- */
   var heroSlides = document.querySelectorAll(".hero-slide");
   if (heroSlides.length > 1) {
@@ -57,6 +114,14 @@
     });
     if (heroNextBtn) heroNextBtn.addEventListener("click", function () {
       goToHeroSlide(heroIndex + 1);
+      resetHeroTimer();
+    });
+
+    addSwipeSupport(document.querySelector(".hero"), function () {
+      goToHeroSlide(heroIndex + 1);
+      resetHeroTimer();
+    }, function () {
+      goToHeroSlide(heroIndex - 1);
       resetHeroTimer();
     });
 
@@ -245,6 +310,14 @@
     });
     if (nextBtn) nextBtn.addEventListener("click", function () {
       current = (current + 1) % REVIEWS.length;
+      render();
+    });
+
+    addSwipeSupport(document.querySelector(".review-carousel"), function () {
+      current = (current + 1) % REVIEWS.length;
+      render();
+    }, function () {
+      current = (current - 1 + REVIEWS.length) % REVIEWS.length;
       render();
     });
 

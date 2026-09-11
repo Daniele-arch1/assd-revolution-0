@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <title>Servizi e abbonamento — Revolution Sport</title>
 <meta name="description" content="Tutto ciò che è incluso nell'abbonamento di A.S.D. Revolution Sport: sala pesi, macchinari, sala cardio, spogliatoi, armadietto e assistenza qualificata.">
 <link rel="icon" type="image/webp" href="img/logo.webp">
@@ -23,7 +24,7 @@
       <a href="abbonati.html#servizi">Servizi</a>
       <a href="macchinari.html">Macchinari</a>
       <a href="index.html#orari">Orari</a>
-      <a href="index.html#eventi">Aggiornamenti</a>
+      <a href="aggiornamenti.html">Aggiornamenti</a>
       <a href="profilo.html">Profilo</a>
       <a href="abbonati.html" class="btn btn-primary btn-small">Iscriviti ora</a>
     </nav>
@@ -37,7 +38,6 @@
   <div class="container">
     <div class="breadcrumb"><a href="index.html">Home</a> / Servizi</div>
     <h1>Cosa include il tuo abbonamento</h1>
-    <p>Un unico abbonamento, tutto compreso: dalla sala pesi all'assistenza di professionisti qualificati.</p>
   </div>
 </section>
 
@@ -48,48 +48,53 @@
       <h2>Tutto quello che ti serve per allenarti</h2>
     </div>
 
-    <div class="services-grid">
+    <div class="mobile-featured-card">
       <div class="service-card">
-        <div class="service-icon">🏋️</div>
         <h3>Accesso alla sala pesi</h3>
         <p>Libero accesso alla sala pesi durante tutto l'orario di apertura.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">⚙️</div>
-        <h3>Accesso ai macchinari</h3>
-        <p>Attrezzatura completa per ogni gruppo muscolare, sempre in ordine.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🏃</div>
-        <h3>Accesso alla sala cardio</h3>
-        <p>Tapis roulant, cyclette e vogatori per il tuo allenamento cardiovascolare.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🚿</div>
-        <h3>Spogliatoi e docce</h3>
-        <p>Spogliatoi puliti e docce a disposizione dopo ogni allenamento.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🔒</div>
-        <h3>Armadietto</h3>
-        <p>Un armadietto personale per custodire i tuoi effetti in tutta sicurezza.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🎓</div>
-        <h3>Professionisti qualificati</h3>
-        <p>Personal trainer e istruttori qualificati sempre presenti in struttura.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">⏸️</div>
-        <h3>Sospensione gratuita</h3>
-        <p>Puoi sospendere l'abbonamento gratuitamente quando ne hai bisogno.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🤝</div>
-        <h3>Personale competente</h3>
-        <p>Uno staff pronto ad aiutarti nella scelta del piano di allenamento giusto.</p>
-      </div>
     </div>
+
+    <details class="mobile-accordion" id="servicesAccordion" open>
+      <summary class="btn btn-outline mobile-accordion-summary" data-label-closed="Vedi tutti i servizi" data-label-open="Nascondi servizi">
+        <span class="mobile-accordion-label">Vedi tutti i servizi</span>
+        <span class="mobile-accordion-chevron" aria-hidden="true">▾</span>
+      </summary>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Accesso alla sala pesi</h3>
+          <p>Libero accesso alla sala pesi durante tutto l'orario di apertura.</p>
+        </div>
+        <div class="service-card">
+          <h3>Accesso ai macchinari</h3>
+          <p>Attrezzatura completa per ogni gruppo muscolare, sempre in ordine.</p>
+        </div>
+        <div class="service-card">
+          <h3>Accesso alla sala cardio</h3>
+          <p>Tapis roulant, cyclette e vogatori per il tuo allenamento cardiovascolare.</p>
+        </div>
+        <div class="service-card">
+          <h3>Spogliatoi e docce</h3>
+          <p>Spogliatoi puliti e docce a disposizione dopo ogni allenamento.</p>
+        </div>
+        <div class="service-card">
+          <h3>Armadietto</h3>
+          <p>Un armadietto personale per custodire i tuoi effetti in tutta sicurezza.</p>
+        </div>
+        <div class="service-card">
+          <h3>Professionisti qualificati</h3>
+          <p>Personal trainer e istruttori qualificati sempre presenti in struttura.</p>
+        </div>
+        <div class="service-card">
+          <h3>Sospensione gratuita</h3>
+          <p>Puoi sospendere l'abbonamento gratuitamente quando ne hai bisogno.</p>
+        </div>
+        <div class="service-card">
+          <h3>Personale competente</h3>
+          <p>Uno staff pronto ad aiutarti nella scelta del piano di allenamento giusto.</p>
+        </div>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -100,15 +105,7 @@
       <h2>Scegli il piano più adatto a te</h2>
     </div>
 
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>Ingresso giornaliero</h3>
-        <div class="price">€10</div>
-        <div class="price-note">un ingresso</div>
-        <p class="plan-desc">Per provare la palestra senza vincoli, un giorno alla volta.</p>
-        <a href="tel:+390000000000" class="btn btn-outline">Scegli questo piano</a>
-      </div>
-
+    <div class="mobile-featured-card">
       <div class="pricing-card">
         <h3>Mensile</h3>
         <div class="price">€45<span>/mese</span></div>
@@ -116,49 +113,50 @@
         <p class="plan-desc">La massima flessibilità, senza impegno a lungo termine.</p>
         <a href="tel:+390000000000" class="btn btn-outline">Scegli questo piano</a>
       </div>
-
-      <div class="pricing-card">
-        <h3>6 mesi</h3>
-        <div class="price">€225</div>
-        <div class="price-note">equivalenti a €37,50/mese</div>
-        <div class="price-save">Risparmi €45</div>
-        <p class="plan-desc">Impegno di 6 mesi, prezzo più conveniente del mensile.</p>
-        <a href="tel:+390000000000" class="btn btn-outline">Scegli questo piano</a>
-      </div>
-
-      <div class="pricing-card is-featured">
-        <span class="pricing-badge">Più conveniente</span>
-        <h3>12 mesi</h3>
-        <div class="price">€345</div>
-        <div class="price-note">equivalenti a €28,75/mese</div>
-        <div class="price-save">Risparmi €195</div>
-        <p class="plan-desc">Il massimo risparmio per chi si allena tutto l'anno.</p>
-        <a href="tel:+390000000000" class="btn btn-primary">Scegli questo piano</a>
-      </div>
     </div>
 
-    <div class="plan-card">
-      <div>
-        <span class="eyebrow" style="color:#ffb3bd;">Iscriviti ora</span>
-        <h2>Pronto a iniziare ad allenarti?</h2>
-        <p>Passa in palestra, contattaci o paga online: ti aiutiamo a scegliere l'abbonamento più adatto a te, con la possibilità di sospenderlo gratuitamente quando serve.</p>
-        <div class="hero-actions" style="justify-content:flex-start;">
-          <a href="tel:+390000000000" class="btn btn-primary">Chiamaci</a>
-          <a href="mailto:info@revolutionsport.it" class="btn btn-outline" style="color:#fff;">Scrivici</a>
-          <a href="#" class="btn btn-outline is-disabled" style="color:#fff;" aria-disabled="true" title="Il pagamento online sarà presto disponibile">Paga online</a>
+    <details class="mobile-accordion" id="pricingAccordion" open>
+      <summary class="btn btn-outline mobile-accordion-summary" data-label-closed="Vedi tutti gli abbonamenti" data-label-open="Nascondi abbonamenti">
+        <span class="mobile-accordion-label">Vedi tutti gli abbonamenti</span>
+        <span class="mobile-accordion-chevron" aria-hidden="true">▾</span>
+      </summary>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Ingresso giornaliero</h3>
+          <div class="price">€10</div>
+          <div class="price-note">un ingresso</div>
+          <p class="plan-desc">Per provare la palestra senza vincoli, un giorno alla volta.</p>
+          <a href="tel:+390000000000" class="btn btn-outline">Scegli questo piano</a>
         </div>
-        <p class="payment-note">Il pagamento online sarà attivo a breve.</p>
+
+        <div class="pricing-card">
+          <h3>Mensile</h3>
+          <div class="price">€45<span>/mese</span></div>
+          <div class="price-note">si rinnova ogni mese</div>
+          <p class="plan-desc">La massima flessibilità, senza impegno a lungo termine.</p>
+          <a href="tel:+390000000000" class="btn btn-outline">Scegli questo piano</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>6 mesi</h3>
+          <div class="price">€225</div>
+          <div class="price-note">equivalenti a €37,50/mese</div>
+          <div class="price-save">Risparmi €45</div>
+          <p class="plan-desc">Impegno di 6 mesi, prezzo più conveniente del mensile.</p>
+          <a href="tel:+390000000000" class="btn btn-outline">Scegli questo piano</a>
+        </div>
+
+        <div class="pricing-card is-featured">
+          <span class="pricing-badge">Più conveniente</span>
+          <h3>12 mesi</h3>
+          <div class="price">€345</div>
+          <div class="price-note">equivalenti a €28,75/mese</div>
+          <div class="price-save">Risparmi €195</div>
+          <p class="plan-desc">Il massimo risparmio per chi si allena tutto l'anno.</p>
+          <a href="tel:+390000000000" class="btn btn-primary">Scegli questo piano</a>
+        </div>
       </div>
-      <div class="plan-price">
-        <div class="amount">45€<span>/mese</span></div>
-        <small>Abbonamento mensile, altri piani sopra</small>
-        <ul class="included-list">
-          <li>Accesso completo alla sala</li>
-          <li>Armadietto incluso</li>
-          <li>Sospensione gratuita</li>
-        </ul>
-      </div>
-    </div>
+    </details>
   </div>
 </section>
 
@@ -178,7 +176,7 @@
         <li><a href="abbonati.html">Servizi</a></li>
         <li><a href="macchinari.html">Macchinari</a></li>
         <li><a href="foto.html">Foto</a></li>
-        <li><a href="index.html#eventi">Corsi ed eventi</a></li>
+        <li><a href="aggiornamenti.html">Corsi ed eventi</a></li>
       </ul>
     </div>
     <div class="footer-col">
