@@ -6,6 +6,64 @@
 (function () {
   "use strict";
 
+  /* ---------- Hero slider (scorrimento immagini) ---------- */
+  var heroSlides = document.querySelectorAll(".hero-slide");
+  if (heroSlides.length > 1) {
+    var heroIndex = 0;
+    var heroDotsWrap = document.getElementById("heroDots");
+    var heroPrevBtn = document.getElementById("heroPrev");
+    var heroNextBtn = document.getElementById("heroNext");
+    var heroTimer;
+
+    if (heroDotsWrap) {
+      heroSlides.forEach(function (_, i) {
+        var dot = document.createElement("button");
+        dot.type = "button";
+        dot.setAttribute("aria-label", "Vai alla foto " + (i + 1));
+        dot.addEventListener("click", function () {
+          goToHeroSlide(i);
+          resetHeroTimer();
+        });
+        heroDotsWrap.appendChild(dot);
+      });
+    }
+
+    var renderHero = function () {
+      heroSlides.forEach(function (slide, i) {
+        slide.classList.toggle("is-active", i === heroIndex);
+      });
+      if (heroDotsWrap) {
+        heroDotsWrap.querySelectorAll("button").forEach(function (dot, i) {
+          dot.classList.toggle("is-active", i === heroIndex);
+        });
+      }
+    };
+
+    var goToHeroSlide = function (i) {
+      heroIndex = (i + heroSlides.length) % heroSlides.length;
+      renderHero();
+    };
+
+    var resetHeroTimer = function () {
+      clearInterval(heroTimer);
+      heroTimer = setInterval(function () {
+        goToHeroSlide(heroIndex + 1);
+      }, 5000);
+    };
+
+    if (heroPrevBtn) heroPrevBtn.addEventListener("click", function () {
+      goToHeroSlide(heroIndex - 1);
+      resetHeroTimer();
+    });
+    if (heroNextBtn) heroNextBtn.addEventListener("click", function () {
+      goToHeroSlide(heroIndex + 1);
+      resetHeroTimer();
+    });
+
+    renderHero();
+    resetHeroTimer();
+  }
+
   /* ---------- Nav mobile ---------- */
   var navToggle = document.getElementById("navToggle");
   var mainNav = document.getElementById("mainNav");
@@ -219,6 +277,75 @@
         e.preventDefault();
         if (authNote) authNote.textContent = "Anteprima dimostrativa: nessun dato è stato salvato.";
       });
+    });
+  }
+
+  /* ---------- Lightbox foto ---------- */
+  var lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    var lightboxImg = document.getElementById("lightboxImg");
+    var lightboxClose = document.getElementById("lightboxClose");
+
+    var openLightbox = function (src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || "";
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+
+    var closeLightbox = function () {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    };
+
+    document.querySelectorAll(".photo-item img").forEach(function (img) {
+      img.addEventListener("click", function () {
+        // Su mobile la foto ingrandita avrebbe la stessa dimensione della copertina: nessun beneficio, si disattiva.
+        if (window.innerWidth <= 760) return;
+        openLightbox(img.src, img.alt);
+      });
+    });
+
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
+    });
+  }
+
+  /* ---------- Banner cookie ---------- */
+  var cookieBanner = document.getElementById("cookieBanner");
+  if (cookieBanner) {
+    var COOKIE_CONSENT_KEY = "revolutionSportCookieConsent";
+    var storedConsent = null;
+    try {
+      storedConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
+    } catch (e) {}
+
+    if (!storedConsent) {
+      setTimeout(function () {
+        cookieBanner.classList.add("is-visible");
+      }, 400);
+    }
+
+    var setCookieConsent = function (value) {
+      try {
+        localStorage.setItem(COOKIE_CONSENT_KEY, value);
+      } catch (e) {}
+      cookieBanner.classList.remove("is-visible");
+    };
+
+    var cookieAcceptBtn = document.getElementById("cookieAccept");
+    var cookieRejectBtn = document.getElementById("cookieReject");
+    if (cookieAcceptBtn) cookieAcceptBtn.addEventListener("click", function () {
+      setCookieConsent("accepted");
+    });
+    if (cookieRejectBtn) cookieRejectBtn.addEventListener("click", function () {
+      setCookieConsent("rejected");
     });
   }
 })();

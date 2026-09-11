@@ -332,20 +332,72 @@ p {
   z-index: -2;
 }
 
-.hero-media video,
-.hero-media .hero-poster {
+.hero-slide {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.4s ease;
 }
 
-.hero-poster {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(200, 16, 46, .35), transparent 45%),
-    radial-gradient(circle at 80% 75%, rgba(200, 16, 46, .25), transparent 50%),
-    repeating-linear-gradient(135deg, #1c1c1c 0 2px, #161616 2px 48px);
+.hero-slide.is-active {
+  opacity: 1;
+}
+
+.hero-slider-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 88px;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .4);
+  background: rgba(0, 0, 0, .25);
+  color: #fff;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+.hero-arrow:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.hero-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.hero-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, .4);
+  cursor: pointer;
+  padding: 0;
+  transition: all .15s ease;
+}
+
+.hero-dots button.is-active {
+  background: #fff;
+  width: 22px;
+  border-radius: 4px;
 }
 
 .hero::after {
@@ -1115,6 +1167,71 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
+  transition: transform .3s ease, filter .3s ease;
+}
+
+.photo-grid .photo-item img:hover {
+  transform: scale(1.04);
+  filter: brightness(1.04);
+}
+
+/* ---------- Lightbox foto ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease, background-color .35s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(10, 10, 10, .88);
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  transform: scale(.88);
+  opacity: 0;
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), opacity .35s ease;
+}
+
+.lightbox.is-open .lightbox-img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .35);
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+.lightbox-close:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 /* ---------- Banner foto (macchinari.html) ---------- */
@@ -1362,6 +1479,55 @@ p {
   text-align: center;
 }
 
+/* ---------- Banner cookie ---------- */
+.cookie-banner {
+  position: fixed;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 3000;
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--color-dark);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  transform: translateY(140%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .4s cubic-bezier(.2, .8, .2, 1), opacity .4s ease;
+}
+
+.cookie-banner.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cookie-banner p {
+  margin: 0;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, .8);
+  flex: 1;
+  min-width: 200px;
+}
+
+.cookie-banner p a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.cookie-banner-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
 /* ---------- Area profilo (demo, non funzionante) ---------- */
 .auth-section {
   max-width: 440px;
@@ -1468,33 +1634,6 @@ p {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
-  .location-grid,
-  .explore-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .events-grid,
-  .machine-grid,
-  .photo-grid,
-  .preview-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .services-grid,
-  .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .plan-card {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 760px) {
   .main-nav {
     position: fixed;
     top: var(--header-h);
@@ -1532,6 +1671,33 @@ p {
     display: flex;
   }
 
+  .location-grid,
+  .explore-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .events-grid,
+  .machine-grid,
+  .photo-grid,
+  .preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-grid,
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .plan-card {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
   .events-grid,
   .machine-grid,
   .photo-grid,
@@ -1541,8 +1707,31 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .photo-grid .photo-item img {
+    cursor: default;
+  }
+
+  .photo-grid .photo-item img:hover {
+    transform: none;
+    filter: none;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cookie-banner {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 18px 20px;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .cookie-banner-actions {
+    justify-content: center;
   }
 
   .section {

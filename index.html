@@ -36,12 +36,15 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-media">
-    <!-- Inserire qui il video reale della palestra:
-         <video autoplay muted loop playsinline poster="img/hero-poster.jpg">
-           <source src="img/hero-video.mp4" type="video/mp4">
-         </video> -->
-    <div class="hero-poster" aria-hidden="true"></div>
+  <div class="hero-media" id="heroSlider">
+    <div class="hero-slide is-active" style="background-image:url('img/hero scorrimento 1.jpeg')" aria-hidden="true"></div>
+    <div class="hero-slide" style="background-image:url('img/Hero scorrimento 2.jpeg')" aria-hidden="true"></div>
+    <div class="hero-slide" style="background-image:url('img/hero scorrimento 3.jpeg')" aria-hidden="true"></div>
+  </div>
+  <div class="hero-slider-controls">
+    <button type="button" class="hero-arrow" id="heroPrev" aria-label="Foto precedente">←</button>
+    <div class="hero-dots" id="heroDots"></div>
+    <button type="button" class="hero-arrow" id="heroNext" aria-label="Foto successiva">→</button>
   </div>
 
   <div class="hero-content">
@@ -245,8 +248,16 @@
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 A.S.D. Revolution Sport · Tutti i diritti riservati</div>
+  <div class="footer-bottom">© 2026 A.S.D. Revolution Sport · Tutti i diritti riservati · <a href="privacy.html">Privacy e Cookie</a></div>
 </footer>
+
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Consenso cookie">
+  <p>Questo sito utilizza cookie tecnici necessari al funzionamento. Consulta la <a href="privacy.html">Privacy e Cookie Policy</a>.</p>
+  <div class="cookie-banner-actions">
+    <button type="button" class="btn btn-outline btn-small" id="cookieReject" style="color:#fff;">Rifiuta</button>
+    <button type="button" class="btn btn-primary btn-small" id="cookieAccept">Accetta</button>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 </body>

@@ -23,9 +23,10 @@ palestra-landing/
 ├── macchinari.html       Elenco macchinari filtrabile per gruppo muscolare
 ├── recensioni.html       Carosello recensioni Google
 ├── profilo.html          Area profilo: SOLO anteprima grafica, login/registrazione non funzionanti
+├── privacy.html          Privacy e Cookie Policy (testo segnaposto, da far verificare)
 ├── css/style.css         Stile condiviso da tutte le pagine
-├── js/main.js            Nav mobile, stato orari, filtro macchinari, carosello recensioni
-├── img/                  Logo, foto, video ed eventuali icone
+├── js/main.js            Nav mobile, stato orari, filtro macchinari, carosello recensioni, banner cookie
+├── img/                  Logo e foto (incluse quelle del carosello hero)
 ├── serve.ps1             Server statico locale per lo sviluppo (porta 8793)
 └── NOTE-PLACEHOLDER.md   Checklist di cosa aggiornare prima di andare online
 ```
@@ -33,11 +34,12 @@ palestra-landing/
 ## Pagine e funzionalità principali
 
 - **Navbar** fissa in alto, tema scuro, uguale su tutte le pagine e durante lo scroll; su mobile diventa un menu a comparsa.
-- **Home**: hero con stato aperto/chiuso calcolato in tempo reale, sezione "dove si trova" con mappa e orari a comparsa (giorno corrente in evidenza, settimana completa espandibile), card verso foto/macchinari, corsi ed eventi, social.
+- **Home**: hero a schermo intero con carosello di foto (scorrimento automatico + frecce/pallini manuali) e stato aperto/chiuso calcolato in tempo reale, sezione "dove si trova" con mappa e orari a comparsa (giorno corrente in evidenza, settimana completa espandibile), card verso foto/macchinari, corsi ed eventi, social.
 - **Abbonati**: servizi inclusi, 4 piani (giornaliero, mensile, 6 mesi, 12 mesi), contatti (chiamaci/scrivici/paga online).
 - **Macchinari**: filtro per Braccia, Gambe, Petto, Schiena, Cardio, Corpo libero.
 - **Recensioni**: carosello con frecce e indicatori, ordinate per valutazione più alta.
 - **Profilo**: link "Profilo" nella navbar (accanto a "Iscriviti ora") che apre un'anteprima di come sarà l'area personale (login/registrazione, stato abbonamento, pagamento, privacy). È solo dimostrativa: nessun dato viene salvato, serve un backend reale prima di attivarla (dettagli in `NOTE-PLACEHOLDER.md`).
+- **Privacy e Cookie**: pagina dedicata (link in fondo al footer di ogni pagina) con testo segnaposto da far verificare prima di pubblicare. Un banner in basso, su tutte le pagine, chiede di accettare o rifiutare i cookie al primo accesso; la scelta resta salvata nel browser e il banner non ricompare più.
 
 ## Prima di pubblicare
 
