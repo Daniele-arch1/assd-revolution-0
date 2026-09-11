@@ -276,52 +276,73 @@
       return name.split(" ").map(function (p) { return p.charAt(0); }).join("").slice(0, 2).toUpperCase();
     }
 
-    function render() {
-      var r = REVIEWS[current];
-      var stars = "★★★★★☆☆☆☆☆".slice(5 - r.rating, 10 - r.rating);
-      reviewTrack.innerHTML =
+    REVIEWS.forEach(function (r, i) {
+      var card = document.createElement("div");
+      card.className = "review-card" + (i === 0 ? " is-active" : "");
+      card.innerHTML =
         '<div class="review-stars">' + "★".repeat(r.rating) + "☆".repeat(5 - r.rating) + "</div>" +
         '<p class="review-text">“' + r.text + '”</p>' +
         '<div class="review-author">' +
         '<span class="review-avatar">' + initials(r.name) + "</span>" +
         "<span><strong>" + r.name + "</strong><span>" + r.date + "</span></span>" +
         "</div>";
+      reviewTrack.appendChild(card);
+    });
+
+    var reviewCards = reviewTrack.querySelectorAll(".review-card");
+
+    /* Transizione con scorrimento direzionale (avanti/indietro), stessa tecnica del carosello hero
+       ma con offset laterale così le card sembrano scorrere invece di apparire di scatto. */
+    var goToReview = function (index) {
+      var next = (index + REVIEWS.length) % REVIEWS.length;
+      if (next === current) return;
+
+      var distanceForward = (next - current + REVIEWS.length) % REVIEWS.length;
+      var forward = distanceForward <= REVIEWS.length / 2;
+
+      var oldCard = reviewCards[current];
+      var newCard = reviewCards[next];
+
+      newCard.style.transition = "none";
+      newCard.style.transform = "translateX(" + (forward ? "26px" : "-26px") + ")";
+      newCard.getBoundingClientRect();
+      newCard.style.transition = "";
+
+      oldCard.classList.remove("is-active");
+      oldCard.style.transform = "translateX(" + (forward ? "-26px" : "26px") + ")";
+
+      newCard.classList.add("is-active");
+      newCard.style.transform = "translateX(0)";
+      newCard.scrollTop = 0;
+
+      current = next;
 
       if (dotsWrap) {
         dotsWrap.querySelectorAll("button").forEach(function (dot, i) {
           dot.classList.toggle("is-active", i === current);
         });
       }
-    }
+    };
 
     if (dotsWrap) {
       REVIEWS.forEach(function (_, i) {
         var dot = document.createElement("button");
         dot.type = "button";
         dot.setAttribute("aria-label", "Vai alla recensione " + (i + 1));
-        dot.addEventListener("click", function () { current = i; render(); });
+        if (i === 0) dot.classList.add("is-active");
+        dot.addEventListener("click", function () { goToReview(i); });
         dotsWrap.appendChild(dot);
       });
     }
 
-    if (prevBtn) prevBtn.addEventListener("click", function () {
-      current = (current - 1 + REVIEWS.length) % REVIEWS.length;
-      render();
-    });
-    if (nextBtn) nextBtn.addEventListener("click", function () {
-      current = (current + 1) % REVIEWS.length;
-      render();
-    });
+    if (prevBtn) prevBtn.addEventListener("click", function () { goToReview(current - 1); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { goToReview(current + 1); });
 
     addSwipeSupport(document.querySelector(".review-carousel"), function () {
-      current = (current + 1) % REVIEWS.length;
-      render();
+      goToReview(current + 1);
     }, function () {
-      current = (current - 1 + REVIEWS.length) % REVIEWS.length;
-      render();
+      goToReview(current - 1);
     });
-
-    render();
   }
 
   /* ---------- Area profilo (demo, non funzionante) ----------
