@@ -106,13 +106,13 @@
         </div>
       </div>
 
-      <div class="map-frame">
-        <iframe
-          src="https://www.google.com/maps?q=Via+Brigata+Casale,+32,+34170+Gorizia+GO&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Mappa A.S.D. Revolution Sport"
-          aria-label="Mappa della posizione della palestra in Via Brigata Casale 32, Gorizia"></iframe>
+      <div class="map-frame" id="mapFrame" data-map-src="https://www.google.com/maps?q=Via+Brigata+Casale,+32,+34170+Gorizia+GO&output=embed">
+        <div class="map-consent" id="mapConsent">
+          <span class="map-consent-icon" aria-hidden="true">🗺️</span>
+          <p>La mappa è fornita da Google: caricandola, il tuo indirizzo IP viene comunicato a Google. La carichiamo solo se sei d'accordo.</p>
+          <button type="button" class="btn btn-primary btn-small" id="mapLoadBtn">Carica la mappa</button>
+          <p class="map-consent-note">Siamo in Via Brigata Casale, 32 — Gorizia. <a href="privacy.html">Dettagli nella privacy policy</a>.</p>
+        </div>
       </div>
     </div>
   </div>

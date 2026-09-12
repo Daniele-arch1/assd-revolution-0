@@ -429,10 +429,47 @@
     });
   }
 
+  var COOKIE_CONSENT_KEY = "revolutionSportCookieConsent";
+
+  /* ---------- Mappa caricata solo su consenso ----------
+     L'iframe di Google non è nell'HTML: viene creato qui. Finché non c'è un
+     consenso, al suo posto resta un riquadro con un pulsante. Così "Rifiuta"
+     sul banner ha un effetto concreto (nessuna chiamata ai server di Google). */
+  var loadGymMap = function () {};
+  var mapFrame = document.getElementById("mapFrame");
+  if (mapFrame) {
+    var mapConsentBox = document.getElementById("mapConsent");
+    var isMapLoaded = false;
+
+    loadGymMap = function () {
+      if (isMapLoaded) return;
+      isMapLoaded = true;
+
+      var iframe = document.createElement("iframe");
+      iframe.src = mapFrame.getAttribute("data-map-src");
+      iframe.loading = "lazy";
+      iframe.referrerPolicy = "no-referrer-when-downgrade";
+      iframe.title = "Mappa A.S.D. Revolution Sport";
+      iframe.setAttribute("aria-label", "Mappa della posizione della palestra in Via Brigata Casale 32, Gorizia");
+      mapFrame.appendChild(iframe);
+
+      if (mapConsentBox) mapConsentBox.remove();
+    };
+
+    var storedMapConsent = null;
+    try {
+      storedMapConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
+    } catch (e) {}
+    if (storedMapConsent === "accepted") loadGymMap();
+
+    var mapLoadBtn = document.getElementById("mapLoadBtn");
+    // Caricamento manuale: vale solo per questa visita, non cambia la preferenza salvata.
+    if (mapLoadBtn) mapLoadBtn.addEventListener("click", loadGymMap);
+  }
+
   /* ---------- Banner cookie ---------- */
   var cookieBanner = document.getElementById("cookieBanner");
   if (cookieBanner) {
-    var COOKIE_CONSENT_KEY = "revolutionSportCookieConsent";
     var storedConsent = null;
     try {
       storedConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
@@ -455,6 +492,7 @@
     var cookieRejectBtn = document.getElementById("cookieReject");
     if (cookieAcceptBtn) cookieAcceptBtn.addEventListener("click", function () {
       setCookieConsent("accepted");
+      loadGymMap();
     });
     if (cookieRejectBtn) cookieRejectBtn.addEventListener("click", function () {
       setCookieConsent("rejected");
