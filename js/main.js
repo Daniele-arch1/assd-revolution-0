@@ -297,7 +297,10 @@
        la pagina fino al footer. */
     var updateReviewScrollability = function () {
       reviewCards.forEach(function (card) {
-        card.style.overflowY = card.scrollHeight > card.clientHeight ? "auto" : "hidden";
+        // Se sfora meno del padding inferiore si taglia solo spazio vuoto: niente scroll interno.
+        var eccedenza = card.scrollHeight - card.clientHeight;
+        var paddingBasso = parseFloat(getComputedStyle(card).paddingBottom) || 0;
+        card.style.overflowY = eccedenza > paddingBasso ? "auto" : "hidden";
       });
     };
     updateReviewScrollability();
@@ -357,34 +360,6 @@
     });
   }
 
-  /* ---------- Area profilo (demo, non funzionante) ----------
-     Anteprima UI: nessun dato viene salvato o inviato da nessuna parte. */
-  var authTabs = document.querySelectorAll(".auth-tab");
-  if (authTabs.length) {
-    var loginForm = document.getElementById("loginForm");
-    var registerForm = document.getElementById("registerForm");
-    var authNote = document.getElementById("authFormNote");
-
-    authTabs.forEach(function (tab) {
-      tab.addEventListener("click", function () {
-        authTabs.forEach(function (t) { t.classList.remove("is-active"); });
-        tab.classList.add("is-active");
-        var isLogin = tab.dataset.tab === "login";
-        if (loginForm) loginForm.classList.toggle("is-hidden", !isLogin);
-        if (registerForm) registerForm.classList.toggle("is-hidden", isLogin);
-        if (authNote) authNote.textContent = "";
-      });
-    });
-
-    [loginForm, registerForm].forEach(function (form) {
-      if (!form) return;
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        if (authNote) authNote.textContent = "Anteprima dimostrativa: nessun dato è stato salvato.";
-      });
-    });
-  }
-
   /* ---------- Lightbox foto ---------- */
   var lightbox = document.getElementById("lightbox");
   if (lightbox) {
@@ -436,6 +411,7 @@
      consenso, al suo posto resta un riquadro con un pulsante. Così "Rifiuta"
      sul banner ha un effetto concreto (nessuna chiamata ai server di Google). */
   var loadGymMap = function () {};
+  var unloadGymMap = function () {};
   var mapFrame = document.getElementById("mapFrame");
   if (mapFrame) {
     var mapConsentBox = document.getElementById("mapConsent");
@@ -454,6 +430,15 @@
       mapFrame.appendChild(iframe);
 
       if (mapConsentBox) mapConsentBox.remove();
+    };
+
+    // Se l'utente revoca il consenso dopo aver caricato la mappa, la spegne subito.
+    unloadGymMap = function () {
+      if (!isMapLoaded) return;
+      isMapLoaded = false;
+      var iframe = mapFrame.querySelector("iframe");
+      if (iframe) iframe.remove();
+      if (mapConsentBox) mapFrame.appendChild(mapConsentBox);
     };
 
     var storedMapConsent = null;
@@ -496,6 +481,15 @@
     });
     if (cookieRejectBtn) cookieRejectBtn.addEventListener("click", function () {
       setCookieConsent("rejected");
+      unloadGymMap();
+    });
+
+    // "Gestisci cookie" nel footer: riapre il banner per cambiare la scelta.
+    document.querySelectorAll("[data-cookie-settings]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        cookieBanner.classList.add("is-visible");
+        if (cookieAcceptBtn) cookieAcceptBtn.focus();
+      });
     });
   }
 })();

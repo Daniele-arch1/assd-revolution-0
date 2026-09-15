@@ -22,14 +22,17 @@ palestra-landing/
 ├── foto.html             Galleria fotografica
 ├── macchinari.html       Elenco macchinari filtrabile per gruppo muscolare
 ├── aggiornamenti.html    Corsi ed eventi organizzati in palestra
-├── recensioni.html       Stesso carosello recensioni della home, raggiungibile solo via URL diretto
-├── profilo.html          Area profilo: SOLO anteprima grafica, login/registrazione non funzionanti
-├── privacy.html          Privacy e Cookie Policy (testo segnaposto, da far verificare)
+├── recensioni.html       Stesso carosello recensioni della home, solo via URL diretto (noindex)
+├── privacy.html          Privacy e Cookie Policy (bozza estesa, da far validare a un legale)
+├── 404.html              Pagina per indirizzi inesistenti (GitHub Pages)
+├── robots.txt            Regole per i motori di ricerca + indirizzo della sitemap
+├── sitemap.xml           Elenco delle pagine da indicizzare
+├── _config.yml           GitHub Pages: esclude i file interni dal sito pubblicato
 ├── css/style.css         Stile condiviso da tutte le pagine
-├── js/main.js            Nav mobile, stato orari, filtro macchinari, carosello recensioni, banner cookie
-├── img/                  Logo e foto (incluse quelle del carosello hero)
-├── serve.ps1             Server statico locale per lo sviluppo (porta 8793)
-└── NOTE-PLACEHOLDER.md   Checklist di cosa aggiornare prima di andare online
+├── js/main.js            Nav mobile, orari, filtro macchinari, caroselli, mappa su consenso, banner cookie
+├── img/                  Logo (sorgente + versioni leggere), favicon e foto
+├── serve.ps1             Server statico locale per lo sviluppo (porta 8793) — non pubblicato
+└── NOTE-PLACEHOLDER.md   Checklist e note di progetto — non pubblicato
 ```
 
 ## Pagine e funzionalità principali
@@ -39,8 +42,8 @@ palestra-landing/
 - **Abbonati**: servizi inclusi (testo, senza icone), 4 piani (giornaliero, mensile, 6 mesi, 12 mesi); su mobile ogni sezione mostra prima una card in evidenza (un servizio, il piano mensile) e poi una scheda a comparsa apribile con un pulsante ("Vedi tutti i servizi"/"Vedi tutti gli abbonamenti"), su desktop restano griglie di card sempre visibili.
 - **Aggiornamenti**: pagina dedicata a corsi ed eventi organizzati in palestra (in precedenza era una sezione della home).
 - **Macchinari**: filtro per Braccia, Gambe, Petto, Schiena, Cardio, Corpo libero (solo testo, senza icone).
-- **Profilo**: link "Profilo" nella navbar (accanto a "Iscriviti ora") che apre un'anteprima di come sarà l'area personale (login/registrazione, stato abbonamento, pagamento, privacy). È solo dimostrativa: nessun dato viene salvato, serve un backend reale prima di attivarla (dettagli in `NOTE-PLACEHOLDER.md`).
-- **Privacy e Cookie**: pagina dedicata (link in fondo al footer di ogni pagina) con testo segnaposto da far verificare prima di pubblicare. Un banner in basso, su tutte le pagine, chiede di accettare o rifiutare i cookie al primo accesso; la scelta resta salvata nel browser e il banner non ricompare più.
+- **Privacy e Cookie**: pagina dedicata (link in fondo al footer di ogni pagina), bozza estesa da far validare prima di pubblicare. Un banner chiede al primo accesso di accettare o rifiutare: "Accetta" abilita la mappa di Google Maps, "Rifiuta" la lascia spenta. La scelta si può cambiare in ogni momento dal pulsante "Gestisci cookie" nel footer.
+- **SEO**: titoli con "Gorizia", canonical, Open Graph, dati strutturati `ExerciseGym` in home, `sitemap.xml`, `robots.txt`, `404.html`. L'indirizzo base usato è quello di GitHub Pages: se cambia dominio va aggiornato (dettagli in `NOTE-PLACEHOLDER.md`).
 
 ## Prima di pubblicare
 

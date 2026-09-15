@@ -1,0 +1,7 @@
+# Configurazione di GitHub Pages (Jekyll).
+# I file elencati restano nel repository ma NON vengono pubblicati sul sito.
+exclude:
+  - NOTE-PLACEHOLDER.md
+  - README.md
+  - serve.ps1
+  - img/logo.webp
