@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Recensioni — Revolution Sport Gorizia</title>
 <meta name="description" content="Le recensioni Google di A.S.D. Revolution Sport, dalle valutazioni più alte.">
-<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
 <meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,7 +17,7 @@
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a href="index.html" class="brand">
-      <img src="img/logo-header.jpg" alt="Logo A.S.D. Revolution Sport" width="44" height="44" class="brand-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-logo',textContent:'RS'}))">
+      <img src="img/logo-header.jpg" alt="Logo A.S.D. Revolution Sport" width="44" height="44" class="brand-logo-img">
       <span class="brand-text">
         <strong>Revolution Sport</strong>
         <small>Più di una palestra</small>
@@ -28,7 +30,7 @@
       <a href="aggiornamenti.html">Aggiornamenti</a>
       <a href="abbonati.html" class="btn btn-primary btn-small">Iscriviti ora</a>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mainNav">
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mainNav">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -50,12 +52,12 @@
     </span>
     <div class="review-track" id="reviewTrack" aria-live="polite"></div>
     <div class="review-controls">
-      <button class="review-arrow" id="reviewPrev" aria-label="Recensione precedente">←</button>
+      <button type="button" class="review-arrow" id="reviewPrev" aria-label="Recensione precedente">←</button>
       <div class="review-dots" id="reviewDots"></div>
-      <button class="review-arrow" id="reviewNext" aria-label="Recensione successiva">→</button>
+      <button type="button" class="review-arrow" id="reviewNext" aria-label="Recensione successiva">→</button>
     </div>
-    <p style="margin-top:30px;">
-      <a href="https://www.google.com/search?q=asd+revolution+sport&rlz=1C1CHBF_enIT1120IT1120&oq=asd&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYPDIGCAMQRRg8MgYIBBBFGDzSAQgxMzIxajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8" target="_blank" rel="noopener" class="btn btn-outline">Lascia una recensione su Google ↗</a>
+    <p class="review-cta">
+      <a href="https://www.google.com/search?q=A.S.D.+Revolution+Sport+Gorizia" target="_blank" rel="noopener" class="btn btn-outline">Lascia una recensione su Google ↗</a>
     </p>
   </div>
 </section>
@@ -103,7 +105,7 @@
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Consenso cookie">
   <p>Usiamo solo strumenti tecnici necessari al sito. Con «Accetta» carichi anche la mappa di Google Maps, che comunica a Google il tuo indirizzo IP; con «Rifiuta» la mappa resta spenta. Puoi cambiare scelta quando vuoi da «Gestisci cookie» in fondo alla pagina. Dettagli nella <a href="privacy.html">Privacy e Cookie Policy</a>.</p>
   <div class="cookie-banner-actions">
-    <button type="button" class="btn btn-outline btn-small" id="cookieReject" style="color:#fff;">Rifiuta</button>
+    <button type="button" class="btn btn-outline btn-small" id="cookieReject">Rifiuta</button>
     <button type="button" class="btn btn-primary btn-small" id="cookieAccept">Accetta</button>
   </div>
 </div>

@@ -952,9 +952,17 @@ p {
   justify-content: center;
 }
 
-.footer-social a:hover {
+/* Footer: stesso comportamento al passaggio del mouse (e da tastiera) per tutto ciò che è cliccabile */
+.site-footer a,
+.footer-link-btn {
+  transition: color .15s ease, background-color .15s ease, border-color .15s ease;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
   background: var(--color-primary);
   border-color: var(--color-primary);
+  color: #fff;
 }
 
 .footer-col h3 {
@@ -970,7 +978,12 @@ p {
   font-size: 14px;
 }
 
-.footer-col a:hover {
+.footer-col a:hover,
+.footer-col a:focus-visible,
+.footer-bottom a:hover,
+.footer-bottom a:focus-visible,
+.footer-link-btn:hover,
+.footer-link-btn:focus-visible {
   color: var(--color-primary);
 }
 
@@ -989,10 +1002,6 @@ p {
   font: inherit;
   color: inherit;
   cursor: pointer;
-}
-
-.footer-link-btn:hover {
-  text-decoration: underline;
 }
 
 /* Testo leggibile dai motori di ricerca e dagli screen reader ma non visibile */
@@ -1666,6 +1675,41 @@ p {
   text-decoration: underline;
 }
 
+.legal-page .table-wrap {
+  overflow-x: auto;
+  margin: 16px 0 26px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.legal-page table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.legal-page th,
+.legal-page td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.legal-page th {
+  background: var(--color-bg-alt);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.legal-page tr:last-child td {
+  border-bottom: none;
+}
+
 .legal-updated {
   margin-top: 44px;
   padding-top: 18px;
@@ -1720,6 +1764,47 @@ p {
   display: flex;
   gap: 10px;
   flex-shrink: 0;
+}
+
+/* ---------- Classi che sostituiscono gli stili inline ----------
+   La Content Security Policy delle pagine vieta gli attributi style="":
+   ogni ritocco puntuale va scritto qui come classe. */
+.hero-slide-1 { background-image: url("../img/hero scorrimento 1.jpeg"); }
+.hero-slide-2 { background-image: url("../img/Hero scorrimento 2.jpeg"); }
+.hero-slide-3 { background-image: url("../img/hero scorrimento 3.jpeg"); }
+
+.info-row.info-row-last {
+  border-bottom: none;
+}
+
+.hours-wrap {
+  margin-top: 20px;
+}
+
+.social-intro {
+  max-width: 480px;
+  margin: 0 auto 28px;
+}
+
+.section-head.tight {
+  margin-bottom: 24px;
+}
+
+.review-cta {
+  margin-top: 30px;
+}
+
+/* Prima sezione di una pagina senza banner: lascia spazio sotto l'header fisso */
+.section.section-first {
+  padding-top: calc(var(--header-h) + 64px);
+}
+
+.container.legal-page {
+  max-width: 780px;
+}
+
+.cookie-banner .btn-outline {
+  color: #fff;
 }
 
 /* ---------- Responsive ---------- */

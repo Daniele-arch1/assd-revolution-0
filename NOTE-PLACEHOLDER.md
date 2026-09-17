@@ -35,17 +35,59 @@ Sito statico, nessuna build richiesta: apri `index.html` col doppio click o serv
 - Lightbox foto (`foto.html`): cliccando una foto della galleria si apre ingrandita e centrata con una dissolvenza/zoom morbido; clic fuori dai bordi, sul pulsante ✕, sulla foto ingrandita stessa (per richiuderla velocemente) o tasto Esc la richiude con la stessa animazione al contrario. Si attiva automaticamente su ogni `<img>` dentro `.photo-item`, quindi le nuove foto aggiunte a `foto.html` la useranno già senza modifiche extra. **Disattivata sotto 760px** (mobile) solo in `foto.html`: a quella larghezza la foto ingrandita risulterebbe della stessa dimensione della copertina, quindi non ha senso aprirla (il controllo è in `js/main.js`, `window.innerWidth <= 760`).
 - **Stessa lightbox su `aggiornamenti.html`**: la locandina del corso (`.event-thumb img`) è cliccabile per ingrandirla, su qualsiasi dimensione di schermo (qui non è disattivata su mobile, perché a differenza delle miniature di `foto.html` la locandina ingrandita è comunque più leggibile del riquadro nella card). Si richiude cliccandola di nuovo, con il pulsante ✕, cliccando fuori o con Esc — stessa lightbox condivisa, riusa lo stesso markup (`#lightbox`/`#lightboxImg`/`#lightboxClose`) copiato in fondo alla pagina.
 
+## Sicurezza (16/09/2026)
+**Cosa è già nel codice**
+- **Content Security Policy** in `<head>` di tutte le 8 pagine (`<meta http-equiv="Content-Security-Policy">`): il browser esegue solo script e stili che arrivano dal sito stesso, accetta immagini solo dal sito e iframe solo da Google Maps; niente plugin, niente form, niente `<base>` esterni. Verificata: uno script esterno e un `onerror` iniettati di prova vengono bloccati, il sito non genera nessuna violazione.
+- **Regole per non romperla**:
+  - niente `style="..."`, `onclick=`/`onerror=` o `<script>` con codice dentro l'HTML: usare classi in `css/style.css` (sezione "Classi che sostituiscono gli stili inline") e codice in `js/main.js`;
+  - per aggiungere un servizio esterno (Google Analytics, un video YouTube, un font Google, un modulo di terzi) va **aggiornata la policy in tutte le pagine**, e quasi sempre anche il banner cookie e l'informativa;
+  - il blocco `<script type="application/ld+json">` della home è un dato, non codice: la policy non lo blocca.
+- **Referrer**: `strict-origin-when-cross-origin` (i siti esterni vedono solo il dominio di provenienza, non la pagina).
+- **Mappa isolata**: l'iframe di Google ha `sandbox` (non può navigare la nostra pagina né inviare moduli) e un referrer ristretto.
+- **Link esterni**: tutti con `rel="noopener"`. Il link "Lascia una recensione su Google" è stato ripulito dai parametri del browser di chi l'aveva copiato (`rlz`, `gs_lcrp`, `sourceid`…); ora è `google.com/search?q=A.S.D.+Revolution+Sport+Gorizia`.
+- **Nessun dato sensibile nel codice**: niente chiavi API, token, password o form. Tutti i pulsanti hanno `type="button"`.
+- **Logo**: il ripiego con la sigla "RS", se l'immagine non si carica, ora è in `js/main.js` (prima era un `onerror` inline).
+- **Server locale `serve.ps1`**: ascolta solo su `localhost`; corretto un controllo dei percorsi che, per un difetto di prefisso, avrebbe servito file di cartelle vicine con nome simile (es. `palestra-landing-altro`). Richieste come `/../../Windows/win.ini` ricevono 404. Aggiunti i tipi `.jpeg`, `.xml`, `.txt` e gli header `X-Content-Type-Options: nosniff` e `Referrer-Policy`. Il server serve solo per lavorare in locale e non viene pubblicato.
+
+**Cosa non si può fare con GitHub Pages**
+GitHub Pages non permette di impostare header HTTP personalizzati. Restano quindi fuori:
+- la protezione anti-clickjacking (`frame-ancestors` / `X-Frame-Options`), che non funziona tramite `<meta>`;
+- `Permissions-Policy` e una CSP come header vero.
+
+Per un sito solo informativo, senza login né moduli, il rischio concreto è basso. Se in futuro servissero, si può mettere il sito dietro Cloudflare o pubblicarlo su Netlify o Cloudflare Pages, dove gli header si configurano. HSTS è già attivo di default sui domini `github.io`.
+
+**Da fare tu su GitHub, prima e dopo la pubblicazione**
+1. Account GitHub con **autenticazione a due fattori** attiva: chi entra nell'account può cambiare il sito.
+2. Nel repository → Settings → Pages: spuntare **"Enforce HTTPS"**.
+3. Con un dominio proprio: **verificare il dominio** in GitHub (Settings → Pages → *Verified domains*), per evitare che qualcun altro lo agganci a un suo sito; impostare i record DNS esattamente come indicato da GitHub e non lasciare record che puntano a GitHub dopo un'eventuale dismissione.
+4. Non caricare mai nel repository file con password, chiavi, dati di iscritti o documenti: il repository di un sito GitHub Pages gratuito è **pubblico**.
+5. Non aggiungere `.nojekyll`: disattiverebbe l'esclusione dei file interni fatta con `_config.yml`.
+6. Dopo la pubblicazione, controllare che `…/README.md`, `…/NOTE-PLACEHOLDER.md` e `…/serve.ps1` diano 404.
+
 ## Pubblicazione, SEO e prestazioni (15/09/2026)
-- **Indirizzo base del sito**: `https://daniele-arch1.github.io/assd-revolution-0/`. È scritto nei `canonical`, `og:url` e `og:image` di 6 pagine, nel JSON-LD di `index.html`, in `robots.txt` e in `sitemap.xml`. **Se passi a un dominio tuo**, cerca `daniele-arch1.github.io/assd-revolution-0` in tutti i file e sostituiscilo.
+- **Indirizzo base del sito**: `https://www.asdrevolutionsport.it/` (dominio proprio, attivo dal 15/09/2026). È scritto nei `canonical`, `og:url` e `og:image` di 6 pagine, nel JSON-LD di `index.html`, in `robots.txt` e in `sitemap.xml`. Se il dominio cambiasse, cercarlo in tutti i file e sostituirlo.
+- **Dominio e DNS (verificati il 17/09/2026)**:
+  - dominio `asdrevolutionsport.it`, acquistato tramite GoDaddy; nel Registro .it il registrar è **Key-Systems GmbH**, usato da GoDaddy per i .it; scadenza **15/09/2027** (tenere attivo il rinnovo automatico);
+  - DNS su GoDaddy: `ns81`/`ns82.domaincontrol.com`;
+  - `asdrevolutionsport.it` (senza www) punta con 4 record A ai server GitHub Pages `185.199.108–111.153`, mentre `www` è un CNAME verso `daniele-arch1.github.io`. **Nessun inoltro GoDaddy**: tutte le richieste arrivano a GitHub (server `GitHub.com`), che reindirizza HTTP e dominio senza www a `https://www.asdrevolutionsport.it/`;
+  - certificato HTTPS valido per il dominio, rinnovato automaticamente da GitHub (quello verificato scade il 15/12/2026);
+  - il vecchio indirizzo `daniele-arch1.github.io/assd-revolution-0/` reindirizza al dominio.
+- **Cosa non toccare su GoDaddy**: i 4 record A, il CNAME `www` e i nameserver. Non attivare l'inoltro del dominio né il sito o la pagina "parcheggio" di GoDaddy: cambierebbe il funzionamento del sito e renderebbe inesatta l'informativa (punto 3.6).
 - **Titoli**: tutti contengono "Gorizia" (in home: "Palestra a Gorizia — A.S.D. Revolution Sport").
 - **`<h1>` in `abbonati.html`**: presente ma nascosto alla vista (classe `.visually-hidden`), per non cambiare la grafica. Lo leggono motori di ricerca e screen reader.
 - **Dati strutturati (JSON-LD, tipo `ExerciseGym`)** in `index.html`: nome, indirizzo, telefono, email, orari, social. **Se cambiano orari, telefono o indirizzo vanno aggiornati anche qui**, oltre che in `HOURS` di `js/main.js` e nei footer.
 - **Open Graph**: anteprima per WhatsApp/Facebook su 6 pagine, immagine `hero scorrimento 1.jpeg`.
+- **Logo nei risultati di Google**:
+  - *Favicon accanto al risultato*: `img/favicon.png` a **96×96px**, perché Google accetta solo favicon quadrate multiple di 48px (la precedente da 64px non era valida). Il link `<link rel="icon" sizes="96x96">` è in tutte le pagine.
+  - *Logo nei dati strutturati*: il JSON-LD di `index.html` punta a `img/logo-512.jpg` (512×512px; Google chiede almeno 112px). Lo scaricano solo i motori di ricerca, non i visitatori.
+  - Google mostra **una sola favicon per nome host**: con il dominio proprio `www.asdrevolutionsport.it` userà quella della palestra. Il logo che compare nelle ricerche locali e su Maps viene invece dalla **scheda Google Business Profile** della palestra: va caricato lì.
+  - Aggiornamento in Google: dopo la pubblicazione, da Search Console chiedere l'indicizzazione della home e inviare `sitemap.xml`. Google aggiorna favicon e logo con i suoi tempi, anche settimane.
+- **`google6de821c45435e833.html`**: è il file di verifica della proprietà su Google Search Console. **Non va modificato né cancellato**, altrimenti la verifica decade, e deve restare pubblicato (non è in `_config.yml`).
 - **`recensioni.html`**: `noindex, follow` ed esclusa dalla sitemap (duplica la home). **`404.html`**: `noindex`.
-- **`robots.txt`** — attenzione: i motori di ricerca lo leggono solo nella **radice del dominio**. Finché il sito è in `github.io/assd-revolution-0/` viene ignorato; diventerà efficace con un dominio proprio. Nel frattempo la sitemap va inviata a mano da **Google Search Console**.
-- **`404.html`**: GitHub Pages la mostra per gli indirizzi inesistenti. I link relativi funzionano per indirizzi di primo livello (es. `/assd-revolution-0/pagina-inesistente.html`), non per percorsi annidati.
+- **`robots.txt`**: con il dominio proprio si trova nella radice (`https://www.asdrevolutionsport.it/robots.txt`), quindi i motori di ricerca lo leggono. Su **Google Search Console** conviene comunque aggiungere la proprietà del dominio `asdrevolutionsport.it` (o `https://www.asdrevolutionsport.it/`) e inviare lì la sitemap: la proprietà verificata su `github.io` non vale per il nuovo dominio.
+- **`404.html`**: GitHub Pages la mostra per gli indirizzi inesistenti. I link relativi funzionano per gli indirizzi di primo livello (es. `/pagina-inesistente.html`), non per percorsi annidati.
 - **File interni esclusi dal sito pubblicato**: `_config.yml` esclude `NOTE-PLACEHOLDER.md`, `README.md`, `serve.ps1` e `img/logo.webp`, che restano nel repository ma non vengono serviti online. Funziona perché GitHub Pages usa Jekyll: **non aggiungere un file `.nojekyll`**, altrimenti l'esclusione smette di funzionare. Su un hosting diverso quei file semplicemente non vanno caricati.
-- **Logo alleggerito**: l'header usa `img/logo-header.jpg` (132px, 11 KB, su fondo bianco come il cerchio dell'header) e la favicon `img/favicon.png` (64px, 9 KB), al posto di `img/logo.webp` (1254px, 182 KB) che resta solo come file sorgente. Se il logo cambia, vanno rigenerate le due versioni piccole.
+- **Logo alleggerito**: l'header usa `img/logo-header.jpg` (132px, 11 KB, su fondo bianco come il cerchio dell'header) e la favicon `img/favicon.png` (96px, 17,7 KB), al posto di `img/logo.webp` (1254px, 182 KB) che resta solo come file sorgente. Se il logo cambia, vanno rigenerate le due versioni piccole.
 - **Foto**: `width`/`height` reali su tutte le immagini di contenuto (evita che la pagina "salti" durante il caricamento); `loading="lazy"` sulle foto di `foto.html` tranne la prima, che è visibile subito. Il banner di `macchinari.html` ha `height: auto` nel CSS, necessario perché gli attributi non lo deformino su mobile. Rimosso il `src=""` vuoto dalla lightbox.
 - **Cookie**: il testo del banner ora cita Google Maps e spiega cosa fanno "Accetta" e "Rifiuta". Il pulsante **"Gestisci cookie"** nel footer di ogni pagina riapre il banner; se si rifiuta dopo aver accettato, la mappa si spegne subito (`unloadGymMap` in `js/main.js`). I punti 4, 11.4 e 11.5 dell'informativa lo descrivono.
 - **Recensioni e rotella del mouse**: tolto `overscroll-behavior-y: contain` dalle card, che bloccava lo scroll della pagina con il mouse. Card alte 420px (520px su mobile); lo scroll interno si attiva solo se il testo sfora più del padding inferiore, e `justify-content: safe center` evita che un testo molto lungo venga tagliato in alto.

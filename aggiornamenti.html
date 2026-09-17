@@ -4,17 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Corsi ed eventi — Revolution Sport Gorizia</title>
 <meta name="description" content="Corsi ed eventi organizzati da associazioni e professionisti presso A.S.D. Revolution Sport.">
-<link rel="icon" type="image/png" href="img/favicon.png">
-<link rel="canonical" href="https://daniele-arch1.github.io/assd-revolution-0/aggiornamenti.html">
+<link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
+<link rel="canonical" href="https://www.asdrevolutionsport.it/aggiornamenti.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="A.S.D. Revolution Sport">
 <meta property="og:locale" content="it_IT">
 <meta property="og:title" content="Corsi ed eventi — Revolution Sport Gorizia">
 <meta property="og:description" content="Corsi ed eventi organizzati da associazioni e professionisti presso A.S.D. Revolution Sport.">
-<meta property="og:url" content="https://daniele-arch1.github.io/assd-revolution-0/aggiornamenti.html">
-<meta property="og:image" content="https://daniele-arch1.github.io/assd-revolution-0/img/hero%20scorrimento%201.jpeg">
+<meta property="og:url" content="https://www.asdrevolutionsport.it/aggiornamenti.html">
+<meta property="og:image" content="https://www.asdrevolutionsport.it/img/hero%20scorrimento%201.jpeg">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="1066">
 <meta name="twitter:card" content="summary_large_image">
@@ -25,7 +27,7 @@
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a href="index.html" class="brand">
-      <img src="img/logo-header.jpg" alt="Logo A.S.D. Revolution Sport" width="44" height="44" class="brand-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-logo',textContent:'RS'}))">
+      <img src="img/logo-header.jpg" alt="Logo A.S.D. Revolution Sport" width="44" height="44" class="brand-logo-img">
       <span class="brand-text">
         <strong>Revolution Sport</strong>
         <small>Più di una palestra</small>
@@ -38,7 +40,7 @@
       <a href="aggiornamenti.html">Aggiornamenti</a>
       <a href="abbonati.html" class="btn btn-primary btn-small">Iscriviti ora</a>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mainNav">
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mainNav">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -55,7 +57,7 @@
   <div class="container">
     <span class="eyebrow">Seguici</span>
     <h2>Non perderti i prossimi corsi</h2>
-    <p style="max-width:480px;margin:0 auto 28px;">Nuove date, orari e locandine vengono pubblicati per primi sui nostri social: seguici su Facebook e Instagram per non perdere nessun aggiornamento.</p>
+    <p class="social-intro">Nuove date, orari e locandine vengono pubblicati per primi sui nostri social: seguici su Facebook e Instagram per non perdere nessun aggiornamento.</p>
     <div class="social-links">
       <a class="social-btn facebook" href="https://www.facebook.com/revolutionsport2016ASD/?locale=it_IT" target="_blank" rel="noopener">
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.2c0-.87.24-1.46 1.5-1.46H16.5V4.1C16.2 4.06 15.2 4 14 4c-2.4 0-4 1.46-4 4.15V10.5H7.5v3H10V21h3.5z"/></svg>
@@ -112,7 +114,7 @@
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Consenso cookie">
   <p>Usiamo solo strumenti tecnici necessari al sito. Con «Accetta» carichi anche la mappa di Google Maps, che comunica a Google il tuo indirizzo IP; con «Rifiuta» la mappa resta spenta. Puoi cambiare scelta quando vuoi da «Gestisci cookie» in fondo alla pagina. Dettagli nella <a href="privacy.html">Privacy e Cookie Policy</a>.</p>
   <div class="cookie-banner-actions">
-    <button type="button" class="btn btn-outline btn-small" id="cookieReject" style="color:#fff;">Rifiuta</button>
+    <button type="button" class="btn btn-outline btn-small" id="cookieReject">Rifiuta</button>
     <button type="button" class="btn btn-primary btn-small" id="cookieAccept">Accetta</button>
   </div>
 </div>

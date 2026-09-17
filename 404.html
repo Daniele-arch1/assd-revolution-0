@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Pagina non trovata — Revolution Sport Gorizia</title>
 <meta name="description" content="La pagina che cerchi non esiste o è stata spostata.">
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,7 +17,7 @@
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a href="index.html" class="brand">
-      <img src="img/logo-header.jpg" alt="Logo A.S.D. Revolution Sport" width="44" height="44" class="brand-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-logo',textContent:'RS'}))">
+      <img src="img/logo-header.jpg" alt="Logo A.S.D. Revolution Sport" width="44" height="44" class="brand-logo-img">
       <span class="brand-text">
         <strong>Revolution Sport</strong>
         <small>Più di una palestra</small>
@@ -85,7 +87,7 @@
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Consenso cookie">
   <p>Usiamo solo strumenti tecnici necessari al sito. Con «Accetta» carichi anche la mappa di Google Maps, che comunica a Google il tuo indirizzo IP; con «Rifiuta» la mappa resta spenta. Puoi cambiare scelta quando vuoi da «Gestisci cookie» in fondo alla pagina. Dettagli nella <a href="privacy.html">Privacy e Cookie Policy</a>.</p>
   <div class="cookie-banner-actions">
-    <button type="button" class="btn btn-outline btn-small" id="cookieReject" style="color:#fff;">Rifiuta</button>
+    <button type="button" class="btn btn-outline btn-small" id="cookieReject">Rifiuta</button>
     <button type="button" class="btn btn-primary btn-small" id="cookieAccept">Accetta</button>
   </div>
 </div>

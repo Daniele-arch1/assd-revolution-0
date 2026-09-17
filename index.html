@@ -4,17 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Palestra a Gorizia — A.S.D. Revolution Sport</title>
 <meta name="description" content="A.S.D. Revolution Sport: sala pesi, macchinari, sala cardio e corsi. Scopri gli orari, dove si trova la palestra e abbonati ora.">
-<link rel="icon" type="image/png" href="img/favicon.png">
-<link rel="canonical" href="https://daniele-arch1.github.io/assd-revolution-0/">
+<link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
+<link rel="canonical" href="https://www.asdrevolutionsport.it/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="A.S.D. Revolution Sport">
 <meta property="og:locale" content="it_IT">
 <meta property="og:title" content="Palestra a Gorizia — A.S.D. Revolution Sport">
 <meta property="og:description" content="A.S.D. Revolution Sport: sala pesi, macchinari, sala cardio e corsi. Scopri gli orari, dove si trova la palestra e abbonati ora.">
-<meta property="og:url" content="https://daniele-arch1.github.io/assd-revolution-0/">
-<meta property="og:image" content="https://daniele-arch1.github.io/assd-revolution-0/img/hero%20scorrimento%201.jpeg">
+<meta property="og:url" content="https://www.asdrevolutionsport.it/">
+<meta property="og:image" content="https://www.asdrevolutionsport.it/img/hero%20scorrimento%201.jpeg">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="1066">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,9 +26,9 @@
   "@type": "ExerciseGym",
   "name": "A.S.D. Revolution Sport",
   "description": "Palestra a Gorizia con sala pesi, macchinari e sala cardio.",
-  "url": "https://daniele-arch1.github.io/assd-revolution-0/",
-  "logo": "https://daniele-arch1.github.io/assd-revolution-0/img/logo-header.jpg",
-  "image": "https://daniele-arch1.github.io/assd-revolution-0/img/hero%20scorrimento%201.jpeg",
+  "url": "https://www.asdrevolutionsport.it/",
+  "logo": "https://www.asdrevolutionsport.it/img/logo-512.jpg",
+  "image": "https://www.asdrevolutionsport.it/img/hero%20scorrimento%201.jpeg",
   "telephone": "+39 328 479 0333",
   "email": "revolutionsportgo@gmail.com",
   "priceRange": "€",
@@ -56,7 +58,7 @@
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a href="index.html" class="brand">
-      <img src="img/logo-header.jpg" alt="Logo A.S.D. Revolution Sport" width="44" height="44" class="brand-logo-img" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-logo',textContent:'RS'}))">
+      <img src="img/logo-header.jpg" alt="Logo A.S.D. Revolution Sport" width="44" height="44" class="brand-logo-img">
       <span class="brand-text">
         <strong>Revolution Sport</strong>
         <small>Più di una palestra</small>
@@ -69,7 +71,7 @@
       <a href="aggiornamenti.html">Aggiornamenti</a>
       <a href="abbonati.html" class="btn btn-primary btn-small">Iscriviti ora</a>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mainNav">
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mainNav">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -78,9 +80,9 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-media" id="heroSlider">
-    <div class="hero-slide is-active" style="background-image:url('img/hero scorrimento 1.jpeg')" aria-hidden="true"></div>
-    <div class="hero-slide" style="background-image:url('img/Hero scorrimento 2.jpeg')" aria-hidden="true"></div>
-    <div class="hero-slide" style="background-image:url('img/hero scorrimento 3.jpeg')" aria-hidden="true"></div>
+    <div class="hero-slide hero-slide-1 is-active" aria-hidden="true"></div>
+    <div class="hero-slide hero-slide-2" aria-hidden="true"></div>
+    <div class="hero-slide hero-slide-3" aria-hidden="true"></div>
   </div>
   <div class="hero-slider-controls">
     <button type="button" class="hero-arrow" id="heroPrev" aria-label="Foto precedente">←</button>
@@ -120,7 +122,7 @@
             <p>Via Brigata Casale, 32 — 34170 Gorizia (GO) — a pochi minuti dal confine con la Slovenia</p>
           </div>
         </div>
-        <div class="info-row" style="border-bottom:none;">
+        <div class="info-row info-row-last">
           <span class="info-icon">📞</span>
           <div>
             <h4>Contatti</h4>
@@ -128,7 +130,7 @@
           </div>
         </div>
 
-        <div id="orari" style="margin-top:20px;">
+        <div id="orari" class="hours-wrap">
           <details class="hours-accordion">
             <summary class="hours-summary">
               <span class="info-icon">🕒</span>
@@ -194,7 +196,7 @@
   <div class="container">
     <span class="eyebrow">Seguici</span>
     <h2>Resta aggiornato sui social</h2>
-    <p style="max-width:480px;margin:0 auto 28px;">Foto, novità e aggiornamenti su corsi ed eventi: seguici su Facebook e Instagram.</p>
+    <p class="social-intro">Foto, novità e aggiornamenti su corsi ed eventi: seguici su Facebook e Instagram.</p>
     <div class="social-links">
       <a class="social-btn facebook" href="https://www.facebook.com/revolutionsport2016ASD/?locale=it_IT" target="_blank" rel="noopener">
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.2c0-.87.24-1.46 1.5-1.46H16.5V4.1C16.2 4.06 15.2 4 14 4c-2.4 0-4 1.46-4 4.15V10.5H7.5v3H10V21h3.5z"/></svg>
@@ -211,7 +213,7 @@
 <!-- ============ RECENSIONI ============ -->
 <section class="section" id="recensioni">
   <div class="container review-carousel">
-    <div class="section-head center" style="margin-bottom:24px;">
+    <div class="section-head center tight">
       <span class="eyebrow">Recensioni</span>
       <h2>Cosa dicono di noi</h2>
     </div>
@@ -221,12 +223,12 @@
     </span>
     <div class="review-track" id="reviewTrack" aria-live="polite"></div>
     <div class="review-controls">
-      <button class="review-arrow" id="reviewPrev" aria-label="Recensione precedente">←</button>
+      <button type="button" class="review-arrow" id="reviewPrev" aria-label="Recensione precedente">←</button>
       <div class="review-dots" id="reviewDots"></div>
-      <button class="review-arrow" id="reviewNext" aria-label="Recensione successiva">→</button>
+      <button type="button" class="review-arrow" id="reviewNext" aria-label="Recensione successiva">→</button>
     </div>
-    <p style="margin-top:30px;">
-      <a href="https://www.google.com/search?q=asd+revolution+sport&rlz=1C1CHBF_enIT1120IT1120&oq=asd&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYPDIGCAMQRRg8MgYIBBBFGDzSAQgxMzIxajBqN6gCALACAA&sourceid=chrome&source=chrome.ob&ie=UTF-8" target="_blank" rel="noopener" class="btn btn-outline">Lascia una recensione su Google ↗</a>
+    <p class="review-cta">
+      <a href="https://www.google.com/search?q=A.S.D.+Revolution+Sport+Gorizia" target="_blank" rel="noopener" class="btn btn-outline">Lascia una recensione su Google ↗</a>
     </p>
   </div>
 </section>
@@ -275,7 +277,7 @@
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Consenso cookie">
   <p>Usiamo solo strumenti tecnici necessari al sito. Con «Accetta» carichi anche la mappa di Google Maps, che comunica a Google il tuo indirizzo IP; con «Rifiuta» la mappa resta spenta. Puoi cambiare scelta quando vuoi da «Gestisci cookie» in fondo alla pagina. Dettagli nella <a href="privacy.html">Privacy e Cookie Policy</a>.</p>
   <div class="cookie-banner-actions">
-    <button type="button" class="btn btn-outline btn-small" id="cookieReject" style="color:#fff;">Rifiuta</button>
+    <button type="button" class="btn btn-outline btn-small" id="cookieReject">Rifiuta</button>
     <button type="button" class="btn btn-primary btn-small" id="cookieAccept">Accetta</button>
   </div>
 </div>

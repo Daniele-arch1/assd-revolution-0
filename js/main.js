@@ -30,6 +30,20 @@
     }, { passive: true });
   };
 
+  /* ---------- Logo: sigla "RS" se l'immagine non si carica ----------
+     Era un onerror="" nell'HTML, vietato dalla Content Security Policy. */
+  document.querySelectorAll(".brand-logo-img").forEach(function (img) {
+    var useFallback = function () {
+      var badge = document.createElement("span");
+      badge.className = "brand-logo";
+      badge.textContent = "RS";
+      img.replaceWith(badge);
+    };
+    // lo script è in fondo alla pagina: l'errore potrebbe essere già avvenuto
+    if (img.complete && img.naturalWidth === 0) useFallback();
+    else img.addEventListener("error", useFallback);
+  });
+
   /* ---------- Accordion "vedi tutti" (servizi/abbonamenti, solo mobile) ---------- */
   var mobileAccordions = document.querySelectorAll(".mobile-accordion");
   if (mobileAccordions.length) {
@@ -422,9 +436,12 @@
       isMapLoaded = true;
 
       var iframe = document.createElement("iframe");
+      // sandbox prima di src: la mappa non può navigare la nostra pagina né aprire moduli;
+      // i popup restano consentiti per il link "Apri in Google Maps".
+      iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox");
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
       iframe.src = mapFrame.getAttribute("data-map-src");
       iframe.loading = "lazy";
-      iframe.referrerPolicy = "no-referrer-when-downgrade";
       iframe.title = "Mappa A.S.D. Revolution Sport";
       iframe.setAttribute("aria-label", "Mappa della posizione della palestra in Via Brigata Casale 32, Gorizia");
       mapFrame.appendChild(iframe);

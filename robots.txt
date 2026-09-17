@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://daniele-arch1.github.io/assd-revolution-0/sitemap.xml
+Sitemap: https://www.asdrevolutionsport.it/sitemap.xml

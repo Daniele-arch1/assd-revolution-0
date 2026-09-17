@@ -9,7 +9,10 @@ $mime = @{
   ".svg"  = "image/svg+xml"
   ".png"  = "image/png"
   ".jpg"  = "image/jpeg"
+  ".jpeg" = "image/jpeg"
   ".webp" = "image/webp"
+  ".xml"  = "application/xml"
+  ".txt"  = "text/plain"
   ".mp4"  = "video/mp4"
   ".ico"  = "image/x-icon"
 }
@@ -49,7 +52,9 @@ while ($true) {
       $filePath = Join-Path $root $decoded
       $fullPath = [System.IO.Path]::GetFullPath($filePath)
 
-      if ($fullPath.StartsWith($root) -and (Test-Path $fullPath -PathType Leaf)) {
+      # confronto con il separatore finale: senza, "..\palestra-landing-altro\file" passerebbe il controllo
+      $rootWithSep = $root.TrimEnd('\') + '\'
+      if ($fullPath.StartsWith($rootWithSep, [System.StringComparison]::OrdinalIgnoreCase) -and (Test-Path -LiteralPath $fullPath -PathType Leaf)) {
         $ext = [System.IO.Path]::GetExtension($fullPath)
         $contentType = $mime[$ext]
         if (-not $contentType) { $contentType = "application/octet-stream" }
@@ -64,7 +69,7 @@ while ($true) {
     }
 
     $statusText = if ($status -eq 200) { "OK" } elseif ($status -eq 404) { "Not Found" } else { "Bad Request" }
-    $headerText = "HTTP/1.1 $status $statusText`r`nContent-Type: $contentType`r`nContent-Length: $($body.Length)`r`nConnection: close`r`n`r`n"
+    $headerText = "HTTP/1.1 $status $statusText`r`nContent-Type: $contentType`r`nContent-Length: $($body.Length)`r`nX-Content-Type-Options: nosniff`r`nReferrer-Policy: strict-origin-when-cross-origin`r`nConnection: close`r`n`r`n"
     $headerBytes = [System.Text.Encoding]::ASCII.GetBytes($headerText)
     $stream.Write($headerBytes, 0, $headerBytes.Length)
     $stream.Write($body, 0, $body.Length)

@@ -43,6 +43,7 @@ palestra-landing/
 - **Aggiornamenti**: pagina dedicata a corsi ed eventi organizzati in palestra (in precedenza era una sezione della home).
 - **Macchinari**: filtro per Braccia, Gambe, Petto, Schiena, Cardio, Corpo libero (solo testo, senza icone).
 - **Privacy e Cookie**: pagina dedicata (link in fondo al footer di ogni pagina), bozza estesa da far validare prima di pubblicare. Un banner chiede al primo accesso di accettare o rifiutare: "Accetta" abilita la mappa di Google Maps, "Rifiuta" la lascia spenta. La scelta si può cambiare in ogni momento dal pulsante "Gestisci cookie" nel footer.
+- **Sicurezza**: Content Security Policy su tutte le pagine (solo script, stili e immagini del sito; iframe solo da Google Maps), referrer ristretto, mappa in sandbox, nessuno stile o script inline. Regole per non romperla e controlli da fare su GitHub in `NOTE-PLACEHOLDER.md`.
 - **SEO**: titoli con "Gorizia", canonical, Open Graph, dati strutturati `ExerciseGym` in home, `sitemap.xml`, `robots.txt`, `404.html`. L'indirizzo base usato è quello di GitHub Pages: se cambia dominio va aggiornato (dettagli in `NOTE-PLACEHOLDER.md`).
 
 ## Prima di pubblicare
